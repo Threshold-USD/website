@@ -151,7 +151,7 @@ export default function Home() {
           <h3>
             Frequently Asked Questions
           </h3>
-          <div className="grid grid-cols-1 m:grid-cols-2 gap-8 sm:gap-4 mt-12 sm:mt-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-4 mt-12 sm:mt-5">
             <div className="flex flex-col gap-3 max-w-sm">
               <img src="./icons/question-mark.svg" alt="question mark icon" className="w-7" />
               <span className="mt-3 font-semibold">What is ThresholdUSD?</span>
@@ -177,7 +177,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-1 m:grid-cols-2 gap-8 sm:gap-4 mt-9">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-4 mt-9">
             <div className="flex flex-col gap-3 max-w-sm">
               <img src="./icons/question-mark.svg" alt="question mark icon" className="w-7" />
               <span className="mt-3 font-semibold">How does it works?</span>
