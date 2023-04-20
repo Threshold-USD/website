@@ -1,9 +1,62 @@
 import Link from 'next/link'
-import { Inter } from 'next/font/google'
+import axios from "axios";
+import deployments from "../public/collaterals.json";
+import { useEffect, useState } from 'react';
+import { Decimal } from '@/utils/Decimal';
 
-const inter = Inter({ subsets: ['latin'] })
+const coingeckoIds = {
+  eth: "ethereum",
+  tbtc: "tbtc"
+}
 
-export default function Home() {
+const network = "goerli"
+const query = `
+query {
+  global(id: "only") {
+    numberOfOpenTroves
+    currentSystemState {
+      totalCollateral
+      totalDebt
+    }
+  }
+}`
+
+const queryGraph = async (query: string, apiUrl: string) => {
+  try {
+    const response = await axios.post(apiUrl, { query });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error;
+  }
+}
+
+type HomeProps = {
+    data: any
+}
+
+export default function Home({ data }: HomeProps) {
+  const [numberOfOpenedVaults, setNumberOfOpenedVaults] = useState<Decimal>()
+  const [tvlInEth, setTvlInEth] = useState<Decimal>()
+  const [thusdSupply, setThusdSupply] = useState<Decimal>()
+
+  useEffect(() => {
+    if (!data) return
+    let totalCollateral: Decimal = Decimal.from(0)
+    let totalVaults: Decimal = Decimal.from(0)
+    let thusdSupply: Decimal = Decimal.from(0)
+    
+    data.forEach((dataElement: any) => {
+      totalCollateral = totalCollateral.add(Decimal.from(dataElement.data.global.currentSystemState.totalCollateral))
+      totalVaults = totalVaults.add(Decimal.from(dataElement.data.global.numberOfOpenTroves))
+      thusdSupply = thusdSupply.add(Decimal.from(dataElement.data.global.currentSystemState.totalDebt))
+    });
+    setNumberOfOpenedVaults(totalVaults)
+    setTvlInEth(totalCollateral)
+    setThusdSupply(thusdSupply)
+
+  }, [data])
+
   return (
     <div className="flex flex-col min-h-screen items-center">  
       <section className="flex flex-col w-full max-w-8xl px-5 sm:px-12">
@@ -63,20 +116,23 @@ export default function Home() {
           </div>
         </section>
         <section className='flex justify-center mt-24'>
-          <div className="flex shadow-lg rounded-2xl mx-20">
-            <div className="hidden lg:flex flex-col items-center gap-1 border-r border-grey2 px-8 lg:px-12 xl:px-16 py-6">
-              <span className="text-sm font-semibold text-grey">Trades volume</span>
-              <span className="text-3xl font-bold text-blue1">$1,649,325,333</span>
+          <div className="flex shadow-lg rounded-2xl mx-12">
+            <div className="hidden lg:flex flex-col items-center gap-1 border-r border-grey2 px-20 py-6 w-80">
+              <span className="text-sm font-semibold text-grey">thUSD Supply</span>
+              <span className="text-3xl font-bold text-blue1">{thusdSupply?.shorten() ?? "Loading"}</span>
               <span className="text-xs font-semibold text-grey3">LAST 24H</span>
             </div>
-            <div className="flex flex-col items-center gap-1 px-24 xl:px-32 py-6">
-              <span className="text-sm font-semibold text-grey">Trades</span>
-              <span className="text-3xl font-bold text-blue1">499,932</span>
+            <div className="hidden lg:flex flex-col items-center gap-1 px-20 py-6 w-80">
+              <span className="text-sm font-semibold text-grey text-center ">Opened Vaults</span>
+              <span className="text-3xl font-bold text-blue1">{numberOfOpenedVaults?.prettify(0) ?? "Loading"}</span>
               <span className="text-xs font-semibold text-grey3">LAST 24H</span>
             </div>
-            <div className="hidden lg:flex flex-col justify-center gap-1 border-l border-grey2 px-12 lg:px-16 xl:px-20 py-6y text-center">
+            <div className="flex flex-col justify-center gap-1 border-l border-grey2 px-12 lg:px-16 xl:px-14 py-6 text-center w-60 sm:w-80">
             <span className="text-sm font-semibold text-grey">TVL</span>
-              <span className="text-3xl font-bold text-blue1">$362,325,333</span>
+            <div className='flex items-center gap-2 justify-center'>
+              <span className="text-3xl font-bold text-blue1">{tvlInEth?.prettify(2) ?? "Loading"}</span>
+              <span className="text-1xl font-bold text-grey3">{tvlInEth && "ETH"}</span>
+            </div>
               <span className="text-xs font-semibold text-grey3">LAST 24H</span>
             </div>
           </div>
@@ -240,4 +296,27 @@ export default function Home() {
       </div>
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const collaterals = deployments.subfolders;
+  const queriedData: any = []
+
+  collaterals.forEach((collateral) => {
+    const collateralName = collateral.name
+    
+    collateral.subfolders.forEach(async (collateralVersion) => {
+      const version = collateralVersion.name
+      const thresholdUrlByNetwork = `https://api.thegraph.com/subgraphs/name/evandrosaturnino/${collateralName}-${version}-${network}-thresholdusd`
+      const queriedCollateralData = queryGraph(query, thresholdUrlByNetwork)
+      queriedData.push(queriedCollateralData)
+    })
+  })
+
+  const data: any = await Promise.all(queriedData)
+  // Fetch data from external API
+  
+  return {
+    props: { data }, // will be passed to the page component as props
+  }
 }
