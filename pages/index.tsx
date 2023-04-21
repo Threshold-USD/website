@@ -184,7 +184,7 @@ export default function Home({ data }: HomeProps) {
       <div className="flex flex-col w-full max-w-7xl px-12 lg:px-20">
         <section className="flex flex-col mt-24 sm:mt-36">
           <h2>
-            Security By Design
+            Designed to be Secure
           </h2>
           <p className="text-grey font-medium sm:text-lg mt-6">
             Alongside to the fact that the base protocol has been derived from Liquity protocol, our modified contracts <br/>
