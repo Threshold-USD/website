@@ -4,8 +4,14 @@ import deployments from "../public/collaterals.json";
 import { useEffect, useState } from 'react';
 import { Decimal } from '@/utils/Decimal';
 import Image from 'next/image';
+import { fetchCoinGeckoPrice } from '@/utils/fetchCoinGeckoPrice';
 
-const coingeckoIds = {
+type CoingeckoID = {
+  eth: "ethereum",
+  tbtc: "tbtc"
+}
+
+const coingeckoIds: CoingeckoID = {
   eth: "ethereum",
   tbtc: "tbtc"
 }
@@ -32,30 +38,56 @@ const queryGraph = async (query: string, apiUrl: string) => {
   }
 }
 
+const queryCollateralsData = async (collateral: any) => {
+  const queriedData: any = []
+
+  for (const collateralVersion of collateral.subfolders) {
+    const version = collateralVersion.name
+    const thresholdUrlByNetwork = `https://api.thegraph.com/subgraphs/name/evandrosaturnino/${collateral.name}-${version}-${network}-thresholdusd`
+    const queriedCollateralData = await queryGraph(query, thresholdUrlByNetwork)
+    queriedData.push({ collateralName: coingeckoIds[collateral.name as keyof CoingeckoID], queriedCollateralData })
+  }
+
+  const data: any = await Promise.all(queriedData)
+  return data
+}
+
 type HomeProps = {
-    data: any
+  data: any
 }
 
 export default function Home({ data }: HomeProps) {
   const [numberOfOpenedVaults, setNumberOfOpenedVaults] = useState<Decimal>()
   const [tvlInEth, setTvlInEth] = useState<Decimal>()
   const [thusdSupply, setThusdSupply] = useState<Decimal>()
+  const [tokensPrice, setTokensPrice] = useState<Record<string, Decimal>>({})
 
   useEffect(() => {
-    if (!data) return
+    if (Object.values(tokensPrice).length != data.length) return
+
     let totalCollateral: Decimal = Decimal.from(0)
     let totalVaults: Decimal = Decimal.from(0)
     let thusdSupply: Decimal = Decimal.from(0)
     
     data.forEach((dataElement: any) => {
-      totalCollateral = totalCollateral.add(Decimal.from(dataElement.data.global.currentSystemState.totalCollateral))
-      totalVaults = totalVaults.add(Decimal.from(dataElement.data.global.numberOfOpenTroves))
-      thusdSupply = thusdSupply.add(Decimal.from(dataElement.data.global.currentSystemState.totalDebt))
-    });
+      const tokenPrice = tokensPrice[dataElement.collateralName]
+      const tvl = tokenPrice.mul(Decimal.from(dataElement.queriedCollateralData.data.global.currentSystemState.totalCollateral))
+      totalCollateral = totalCollateral.add(tvl)
+      totalVaults = totalVaults.add(Decimal.from(dataElement.queriedCollateralData.data.global.numberOfOpenTroves))
+      thusdSupply = thusdSupply.add(Decimal.from(dataElement.queriedCollateralData.data.global.currentSystemState.totalDebt))
+    })
     setNumberOfOpenedVaults(totalVaults)
     setTvlInEth(totalCollateral)
     setThusdSupply(thusdSupply)
+  }, [tokensPrice])
 
+  useEffect(() => {
+    if (data.length === 0) return
+    data.forEach(async (dataElement: any) => {
+      const { tokenPriceUSD } = await fetchCoinGeckoPrice(dataElement.collateralName)
+      setTokensPrice((prev) => { return { ...prev, [dataElement.collateralName]: tokenPriceUSD }})
+    })
+    
   }, [data])
 
   return (
@@ -135,8 +167,7 @@ export default function Home({ data }: HomeProps) {
             <div className="flex flex-col justify-center gap-1 border-l border-grey2 px-12 lg:px-16 xl:px-14 py-6 text-center w-60 sm:w-80">
             <span className="text-sm font-semibold text-grey">Testnet TVL</span>
             <div className='flex items-center gap-2 justify-center'>
-              <span className="text-3xl font-bold text-blue1">{tvlInEth?.prettify(2) ?? "Loading"}</span>
-              <span className="text-1xl font-bold text-grey3">{tvlInEth && "ETH"}</span>
+              <span className="text-3xl font-bold text-blue1">{tvlInEth?.prettify(2) ? `$${tvlInEth?.prettify(2)}` : "Loading"}</span>
             </div>
               <span className="text-xs font-semibold text-grey3">LAST 24H</span>
             </div>
@@ -334,23 +365,15 @@ export default function Home({ data }: HomeProps) {
 }
 
 export async function getStaticProps() {
+  let collateralData: any = []
   const collaterals = deployments.subfolders;
-  const queriedData: any = []
-
-  collaterals.forEach((collateral) => {
-    const collateralName = collateral.name
-    
-    collateral.subfolders.forEach(async (collateralVersion) => {
-      const version = collateralVersion.name
-      const thresholdUrlByNetwork = `https://api.thegraph.com/subgraphs/name/evandrosaturnino/${collateralName}-${version}-${network}-thresholdusd`
-      const queriedCollateralData = queryGraph(query, thresholdUrlByNetwork)
-      queriedData.push(queriedCollateralData)
-    })
-  })
-
-  const data: any = await Promise.all(queriedData)
   
+  for (const collateral of collaterals) {
+    await queryCollateralsData(collateral).then(async (result) => {
+      result.forEach((element: any) => collateralData.push(element));
+    })
+  }
   return {
-    props: { data }, // will be passed to the page component as props
+    props: { data: collateralData }, // will be passed to the page component as props
   }
 }
