@@ -146,6 +146,7 @@ module.exports = {
         46: '11.5rem',
         50: '12.5rem',
         58: '14.5rem',
+        98: '26rem',
         100: '28rem',
         104: '29rem',
         112: '31rem',
@@ -170,6 +171,7 @@ module.exports = {
         35: '8.71rem',
         '36rem': '36rem',
         '44rem': '44rem',
+        98: '26rem',
       },
       borderRadius: {
         '100pc': '100%',
