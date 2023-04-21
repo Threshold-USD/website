@@ -169,7 +169,7 @@ export default function Home({ data }: HomeProps) {
                 <Image src="./icons/note-search.svg" alt="note search" fill={true} sizes="(min-width: 1rem) 24vw" />
               </div>
               <div className="flex flex-col gap-2">
-                <span className="font-bold">Don't trust, verify</span>
+                <span className="font-bold">Don`t trust, verify</span>
                 <span className="text-xs text-grey4 font-medium">The development of the contracts has been done publicly <br/> and can be checked by anyone in Github here</span>
               </div>
             </div>
