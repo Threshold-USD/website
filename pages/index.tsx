@@ -215,7 +215,7 @@ export default function Home({ data }: HomeProps) {
       <div className="flex flex-col w-full max-w-7xl px-12 lg:px-20">
         <section className="flex flex-col mt-24 sm:mt-36">
           <h2>
-            Designed to be Secure
+            Trustless and Unstoppable
           </h2>
           <p className="text-grey font-medium sm:text-lg mt-6">
             Alongside to the fact that the base protocol has been derived from Liquity protocol, our modified contracts <br/>
@@ -328,9 +328,9 @@ export default function Home({ data }: HomeProps) {
           </div>
         </section>
         <section className='flex flex-col items-center mt-20 sm:mt-36 mb-28'>
-          <span className="text-3xl sm:text-5xl font-bold">Get Involved</span>
-          <p className="text-center text-grey font-medium mt-2 text-sm sm:text-base">We are a project driven by the community and open source. 
-            <br/>If you have any feedback, ideas or questions, feel free to drop in and say hello!
+          <span className="text-3xl sm:text-5xl font-bold">Join our DAO</span>
+          <p className="text-center text-grey font-medium mt-2 text-sm sm:text-base">If you have any feedback, ideas or questions, feel free to drop in and say hello!
+            <br/>We are a project driven by the community and open source. 
           </p>
           <div className="flex gap-12 mt-12">
             <Link href="https://discord.com/invite/threshold" target="_blank">
