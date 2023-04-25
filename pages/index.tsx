@@ -341,20 +341,20 @@ export default function Home({ data }: HomeProps) {
                 <span className="text-xs sm:text-sm font-bold">Discord</span>
               </div>
             </Link>
+            <Link href="https://forum.threshold.network/" target="_blank">
+              <div className="flex flex-col items-center gap-3">
+                <div className="relative w-8 sm:w-11 h-4.5 sm:h-7.5 mt-0.5">
+                  <Image src="./icons/threshold.svg" alt="Threshold logo" fill={true} sizes="(min-width: 1rem) 24vw" />
+                </div>
+                <span className="text-xs sm:text-sm font-bold">DAO Forum</span>
+              </div>
+            </Link>
             <Link href="https://twitter.com/ThresholdUSD" target="_blank">
               <div className="flex flex-col items-center gap-3">
                 <div className="relative w-7 sm:w-10 h-5 sm:h-8">
                   <Image src="./icons/twitter.svg" alt="twitter logo" fill={true} sizes="(min-width: 1rem) 24vw" />
                 </div>
                 <span className="text-xs sm:text-sm font-bold">Twitter</span>
-              </div>
-            </Link>
-            <Link href="https://app.thresholdusd.org" target="_blank">
-              <div className="flex flex-col items-center gap-3">
-                <div className="relative w-8 sm:w-11 h-4.5 sm:h-7.5">
-                  <Image src="./icons/youtube.svg" alt="youtube logo" fill={true} sizes="(min-width: 1rem) 24vw" />
-                </div>
-                <span className="text-xs sm:text-sm font-bold">Youtube</span>
               </div>
             </Link>
           </div>
