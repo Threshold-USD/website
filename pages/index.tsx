@@ -16,7 +16,7 @@ const coingeckoIds: CoingeckoID = {
   tbtc: "tbtc"
 }
 
-const network = "goerli"
+const networks = ["goerli", "sepolia"]
 const query = `
 query {
   global(id: "only") {
@@ -43,9 +43,11 @@ const queryCollateralsData = async (collateral: any) => {
 
   for (const collateralVersion of collateral.subfolders) {
     const version = collateralVersion.name
-    const thresholdUrlByNetwork = `https://api.thegraph.com/subgraphs/name/evandrosaturnino/${collateral.name}-${version}-${network}-thresholdusd`
-    const queriedCollateralData = await queryGraph(query, thresholdUrlByNetwork)
-    queriedData.push({ collateralName: coingeckoIds[collateral.name as keyof CoingeckoID], queriedCollateralData })
+    for (const network of networks) {
+      const thresholdUrlByNetwork = `https://api.thegraph.com/subgraphs/name/evandrosaturnino/${collateral.name}-${version}-${network}-thresholdusd`
+      const queriedCollateralData = await queryGraph(query, thresholdUrlByNetwork)
+      queriedData.push({ collateralName: coingeckoIds[collateral.name as keyof CoingeckoID], queriedCollateralData })
+    }
   }
 
   const data: any = await Promise.all(queriedData)
@@ -60,16 +62,17 @@ export default function Home({ data }: HomeProps) {
   const [numberOfOpenedVaults, setNumberOfOpenedVaults] = useState<Decimal>()
   const [tvlInEth, setTvlInEth] = useState<Decimal>()
   const [thusdSupply, setThusdSupply] = useState<Decimal>()
-  const [tokensPrice, setTokensPrice] = useState<Record<string, Decimal>>({})
-
+  const [tokensPrice, setTokensPrice] = useState<Record<string, Decimal>>({}) 
   useEffect(() => {
-    if (Object.values(tokensPrice).length != data.length) return
-
+    if (Object.values(tokensPrice).length != Object.values(coingeckoIds).length) return
     let totalCollateral: Decimal = Decimal.from(0)
     let totalVaults: Decimal = Decimal.from(0)
     let thusdSupply: Decimal = Decimal.from(0)
     
     data.forEach((dataElement: any) => {
+      if (!dataElement || !dataElement.queriedCollateralData.data) {
+        return
+      }
       const tokenPrice = tokensPrice[dataElement.collateralName]
       const tvl = tokenPrice.mul(Decimal.from(dataElement.queriedCollateralData.data.global.currentSystemState.totalCollateral))
       totalCollateral = totalCollateral.add(tvl)
