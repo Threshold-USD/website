@@ -149,7 +149,7 @@ const faq = [
     answer: <div>
       Recovery Mode kicks in when the Total Collateral Ratio (TCR) of the system falls below 150%.
       <br /><br />During Recovery Mode, Troves with a collateral ratio below 150% can be liquidated.
-      <br /><br />Moreover, the system blocks borrower transactions that would further decrease the TCR. New LUSD may only be issued by adjusting existing Troves in a way that improves their collateral ratio, or by opening a new Trove with a collateral ratio>=150%. In general, if an existing Trove's adjustment reduces its collateral ratio, the transaction is only executed if the resulting TCR is above 150%.
+      <br /><br />Moreover, the system blocks borrower transactions that would further decrease the TCR. New LUSD may only be issued by adjusting existing Troves in a way that improves their collateral ratio, or by opening a new Trove with a collateral ratio greater than 150%. In general, if an existing Trove's adjustment reduces its collateral ratio, the transaction is only executed if the resulting TCR is above 150%.
     </div>,
   },
   {
