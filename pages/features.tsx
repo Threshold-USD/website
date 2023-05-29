@@ -185,7 +185,7 @@ const Features = (): JSX.Element => {
             </div>
           </div>
           <div className="flex justify-center items-center w-full">
-            <div className="relative w-[20rem] h-[18rem] sm:w-[29rem] sm:h-[29rem]">
+            <div className="relative w-[20rem] h-[18rem] sm:w-[29rem] sm:h-[29rem] saturate-75 sm:saturate-100">
               <Image src="/hero-banner.svg" alt="herobanner image" fill={true} sizes="(min-width: 1rem) 24vw" />
             </div>
           </div>

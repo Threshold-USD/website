@@ -96,6 +96,9 @@ module.exports = {
       '7xl': '5rem',
     },
     extend: {
+      saturate: {
+        75: '.75'
+      },
       zIndex: {
         1: '1',
         2: '2',
