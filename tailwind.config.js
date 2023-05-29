@@ -180,12 +180,14 @@ module.exports = {
         'extra-loose': '2.3',
       },
       fontSize: {
+        'xxs': '.8rem',
+        'x0': '1.20rem',
+        '15xl': '1.3rem',
+        'x11': '1.35rem',
         '1p4': '1.4rem',
-        x0: '1.20rem',
-        '2p6': '2.6rem',
-        x11: '1.35rem',
         '25xl': '1.7rem',
-        xxs: '.8rem',
+        '45xl': '2.55rem',
+        '2p6': '2.6rem',
       },
       spacing: {
         0.75: '0.187rem',

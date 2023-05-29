@@ -40,7 +40,7 @@ const inter = localFont({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={`${inter.variable} font-sans`}>
+    <main className={`${inter.variable} font-sans flex flex-col min-h-screen items-center`}>
       <Component className={`${inter.variable} font-sans`} {...pageProps} />
     </main>
   )

@@ -6,6 +6,9 @@ import { Decimal } from '@/utils/Decimal';
 import Image from 'next/image';
 import { fetchCoinGeckoPrice } from '@/utils/fetchCoinGeckoPrice';
 
+import Header from '../components/Header';
+import Footer from '@/components/Footer';
+
 type CoingeckoID = {
   eth: "ethereum",
   tbtc: "tbtc"
@@ -58,7 +61,7 @@ type HomeProps = {
   data: any
 }
 
-export default function Home({ data }: HomeProps) {
+export default function Home({ data }: HomeProps): JSX.Element {
   const [numberOfOpenedVaults, setNumberOfOpenedVaults] = useState<Decimal>()
   const [tvlInEth, setTvlInEth] = useState<Decimal>()
   const [thusdSupply, setThusdSupply] = useState<Decimal>()
@@ -94,47 +97,17 @@ export default function Home({ data }: HomeProps) {
   }, [data])
 
   return (
-    <div className="flex flex-col min-h-screen items-center">  
-      <section className="flex flex-col w-full max-w-8xl pr-3 sm:pl-12 sm:pr-12">
-        <div className="flex justify-between mt-4">
-          <Link href="/">
-            <div className="mt-2 sm:mt-1 relative w-52 sm:w-60 h-3 sm:h-4">
-              <Image src="./icons/threshold-usd.svg" alt="thresholdusd logo" fill={true} sizes="(min-width: 1rem) 24vw" />
-            </div>
-          </Link>
-          <nav className="hidden lg:flex -mt-1 mr-20">
-            <ul className="flex items-center gap-12">
-              <li className="cursor-pointer uppercase font-bold text-sm border-b-2 border-purple py-2">
-                <Link href="/">
-                  home
-                </Link>
-              </li>
-              <li className="cursor-pointer uppercase font-bold text-sm border-b-2 border-transparent py-2">
-                <Link href="https://docs.threshold.network/applications/threshold-usd" target="_blank">
-                  learn
-                </Link>
-              </li>
-              <li className="cursor-pointer uppercase font-bold text-sm border-b-2 border-transparent py-2">
-                <Link href="https://app.thresholdusd.org">
-                  explore
-                </Link>
-              </li>
-            </ul>
-          </nav>
-          <Link href="https://app.thresholdusd.org">
-            <button className="flex items-center gap-2 bg-purple text-white text-xs sm:text-sm font-semibold rounded-lg px-4 sm:px-12 py-2 capitalize">
-              sign in
-            </button>
-          </Link>
-        </div>
-      </section>
+    <>
+      <Header />
       <div className="flex flex-col w-full max-w-5xl px-6 sm:px-12">    
         <section className='flex flex-col items-center mt-32'>
           <h1 className="max-w-4xl text-center">Borrow thUSD against your tBTC</h1>
-          <p className="text-center mt-8 sm:text-lg font-semibold text-grey">First bridge your BTC to tBTC. <br/>Then borrow USD stablecoin with tBTC trustlessly.</p>
-          <div className="flex gap-4 sm:gap-8 mt-10">
+          <p className="text-center mt-8 sm:text-lg font-semibold text-grey">
+            First bridge your BTC to tBTC. <br/>Then borrow USD stablecoin with tBTC trustlessly.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 mt-10">
             <Link href="https://app.thresholdusd.org">
-              <button className="flex items-center gap-2 border bg-purple text-white text-xs sm:text-sm font-semibold rounded-lg px-4 sm:px-12 py-2.5">
+              <button className="flex items-center gap-2 border bg-purple text-white text-xs sm:text-sm font-semibold rounded-lg px-8 sm:px-12 py-2.5">
                 <div className="relative w-5 h-5">
                   <Image src="./icons/user-circle.svg" alt="user icon" fill={true} sizes="(min-width: 1rem) 24vw" />
                 </div>
@@ -176,10 +149,10 @@ export default function Home({ data }: HomeProps) {
             </div>
           </div>
         </section>
-        <section className='flex flex-col md:flex-row gap-20 md:gap-0 justify-center mt-32 sm:mt-40'>
+        <section className='flex flex-col md:flex-row gap-12 sm:gap-20 md:gap-0 justify-center mt-32 sm:mt-40'>
           <div className="flex flex-col gap-4 text-left w-full">
-            <span className="text-2xl">Support of multiple collaterals</span>
-            <span className="text-sm">Supporting initially tBTC and ETH</span>
+            <span className="text-2xl text-center sm:text-left">Support of multiple collaterals</span>
+            <span className="text-sm text-center sm:text-left">Supporting initially tBTC and ETH</span>
             <div className="flex items-start gap-3 mt-4">
               <div className="relative w-6 h-6 pt-0.5">
                 <Image src="./icons/wavy-check.svg" alt="wavy check" fill={true} sizes="(min-width: 1rem) 24vw" />
@@ -208,8 +181,8 @@ export default function Home({ data }: HomeProps) {
               </div>
             </div>
           </div>
-          <div className="flex items-center w-full">
-            <div className="relative w-98 h-98 -mt-4">
+          <div className="flex items-center justify-center sm:justify-end w-full">
+            <div className="relative w-60 h-60 sm:w-98 sm:h-98 -mt-4">
               <Image src="./icons/tokens-cards.svg" alt="collateral tokens" fill={true} sizes="(min-width: 1rem) 24vw" />
             </div>
           </div>
@@ -326,16 +299,18 @@ export default function Home({ data }: HomeProps) {
             </div>
             <span className="mt-3 font-semibold">Full Faqs</span>
             <p className="font-medium text-sm text-grey leading-6">
-            For a full list of FAQs, visit our <Link href="https://docs.threshold.network/applications/threshold-usd" target="_blank"><span className="text-blue">Help Center.</span></Link>
+            For a full list of FAQs, visit our <Link href="/features/#faq"><span className="text-blue">Features page.</span></Link>
             </p>
           </div>
         </section>
-        <section className='flex flex-col items-center mt-20 sm:mt-36 mb-28'>
-          <span className="text-3xl sm:text-5xl font-bold">Join our DAO</span>
-          <p className="text-center text-grey font-medium mt-2 text-sm sm:text-base">If you have any feedback, ideas or questions, feel free to drop in and say hello!
+      </div>
+      <div className="flex flex-col w-full max-w-7xl px-12">
+        <section className='flex flex-col items-center mt-20 sm:mt-36 mb-8 sm:mb-28'>
+          <span className="text-3xl sm:text-5xl font-bold text-center sm:text-left">Join our DAO</span>
+          <p className="text-center text-grey font-medium mt-6 sm:mt-2 text-sm sm:text-base">If you have any feedback, ideas or questions, feel free to drop in and say hello!
             <br/>We are a project driven by the community and open source. 
           </p>
-          <div className="flex gap-12 mt-12">
+          <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 mt-12">
             <Link href="https://discord.com/invite/threshold" target="_blank">
               <div className="flex flex-col items-center gap-3">
                 <div className="relative w-7 sm:w-10 h-5 sm:h-8">
@@ -362,8 +337,9 @@ export default function Home({ data }: HomeProps) {
             </Link>
           </div>
         </section>
+        <Footer />
       </div>
-    </div>
+    </>
   )
 }
 
