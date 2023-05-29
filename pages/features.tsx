@@ -24,7 +24,7 @@ const sideTexts: SideTextType[] = [
     imageAlt: "trading ethereum image",
     title: "Backed by tBTC and ETH",
     description: `Threshold USD is a decentralized borrowing protocol that allows
-     you to draw loans against tBTC and ETH used as collateral. Loans are paid out in thUSD
+     you to draw loans using tBTC and ETH as collaterals. Loans are paid out in thUSD
      (a USD pegged stablecoin) and need to maintain a minimum collateral ratio of 110%.`,
     isReversed: false,
     imageSizes: "w-[12rem] h-[12rem] sm:w-[18rem] sm:h-[18rem]",
@@ -58,7 +58,7 @@ const faq = [
   {
     question: "What is ThresholdUSD?",
     answer: <div>
-      Threshold USD is a decentralized borrowing protocol that allows you to draw loans against tBTC and ETH used as collateral. Loans are paid out in thUSD (a USD pegged stablecoin) and need to maintain a minimum collateral ratio of 110%
+      Threshold USD is a decentralized borrowing protocol that allows you to draw loans using tBTC and ETH as collaterals. Loans are paid out in thUSD (a USD pegged stablecoin) and need to maintain a minimum collateral ratio of 110%
       <br /><br />In addition to the collateral, the loans are secured by a Stability Pool containing thUSD and by fellow borrowers collectively acting as guarantors of last resort. Learn more about these mechanisms under Liquidation.
     </div>,
     opened: true
@@ -169,7 +169,7 @@ const Features = (): JSX.Element => {
           <div className="flex flex-col items-center sm:items-start w-full text-center sm:text-left sm:ml-8">
             <span className="text-4xl sm:text-6xl font-bold">Core Features</span>
             <p className="mt-6 sm:text-15xl font-semibold text-grey">
-              First USD-pegged stablecoin backed by a decentralized scalable Bitcoin-backed asset.
+              First USD-pegged stablecoin underpinned by a decentralized scalable Bitcoin-backed asset.
             </p>
             <div className="flex gap-4 sm:gap-8 mt-10">
               <Link href="https://app.thresholdusd.org">
