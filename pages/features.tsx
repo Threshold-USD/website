@@ -118,8 +118,8 @@ const faq = [
   {
     question: "How does thUSD closely follow the price of USD?",
     answer: <div>
-      The ability to redeem thUSD for tBTC at face value (i.e. 1 thUSD for $1 of tBTC) and the minimum collateral ratio of 110% create a price floor and price ceiling (respectively) through arbitrage opportunities. We call these "hard peg mechanisms" since they are based on direct processes.
-      <br /><br />thUSD also benefits from less direct mechanisms for USD parity — called "soft peg mechanisms". One of these mechanisms is parity as a Schelling point. Since Threshold USD treats thUSD as being equal to USD, parity between the two is an implied equilibrium state of the protocol. Another of these mechanisms is the borrowing fee on new debts. As redemptions increase (implying thUSD is below $1), so too does the baseRate — making borrowing less attractive which keeps new thUSD from hitting the market and driving the price below $1.
+      The ability to redeem thUSD for tBTC at face value (i.e. 1 thUSD for $1 of tBTC) and the minimum collateral ratio of 110% create a price floor and price ceiling (respectively) through arbitrage opportunities. We call these &quot;&quot;hard peg mechanisms&quot;&quot; since they are based on direct processes.
+      <br /><br />thUSD also benefits from less direct mechanisms for USD parity — called &quot;&quot;soft peg mechanisms&quot;&quot;. One of these mechanisms is parity as a Schelling point. Since Threshold USD treats thUSD as being equal to USD, parity between the two is an implied equilibrium state of the protocol. Another of these mechanisms is the borrowing fee on new debts. As redemptions increase (implying thUSD is below $1), so too does the baseRate — making borrowing less attractive which keeps new thUSD from hitting the market and driving the price below $1.
       <br /><br />Liquity (on which thUSD Protocol is based on) did a thorough analysis on the price stability of LUSD <Link href="https://www.liquity.org/blog/on-price-stability-of-liquity" target="_blank" rel="noopener noreferrer"><span className="text-purple">here</span></Link>. This analysis is equally relevant for thUSD.
     </div>,
   },
@@ -135,7 +135,7 @@ const faq = [
   {
     question: "Is a redemption the same as paying back my debt?",
     answer: <div>
-      No, redemptions are a completely separate mechanism. All one has to do to pay back their debt is adjust their Trove's debt and collateral.
+      No, redemptions are a completely separate mechanism. All one has to do to pay back their debt is adjust their Trove&quot;s debt and collateral.
     </div>,
   },
   {
@@ -149,13 +149,13 @@ const faq = [
     answer: <div>
       Recovery Mode kicks in when the Total Collateral Ratio (TCR) of the system falls below 150%.
       <br /><br />During Recovery Mode, Troves with a collateral ratio below 150% can be liquidated.
-      <br /><br />Moreover, the system blocks borrower transactions that would further decrease the TCR. New LUSD may only be issued by adjusting existing Troves in a way that improves their collateral ratio, or by opening a new Trove with a collateral ratio greater than 150%. In general, if an existing Trove's adjustment reduces its collateral ratio, the transaction is only executed if the resulting TCR is above 150%.
+      <br /><br />Moreover, the system blocks borrower transactions that would further decrease the TCR. New LUSD may only be issued by adjusting existing Troves in a way that improves their collateral ratio, or by opening a new Trove with a collateral ratio greater than 150%. In general, if an existing Trove&quot;s adjustment reduces its collateral ratio, the transaction is only executed if the resulting TCR is above 150%.
     </div>,
   },
   {
     question: "What is the Total Collateral Ratio?",
     answer: <div>
-      The Total Collateral Ratio or TCR is the ratio of the Dollar value of the entire system collateral at the current ETH:USD price, to the entire system debt. In other words, it's the sum of the collateral of all Troves expressed in USD, divided by the debt of all Troves expressed in LUSD.
+      The Total Collateral Ratio or TCR is the ratio of the Dollar value of the entire system collateral at the current ETH:USD price, to the entire system debt. In other words, it&quot;s the sum of the collateral of all Troves expressed in USD, divided by the debt of all Troves expressed in LUSD.
     </div>,
   },
 ]
