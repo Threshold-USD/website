@@ -61,3 +61,17 @@ body {
     line-height: 4.5rem;
   }
 }
+
+.border-gradient {
+  background-image: radial-gradient(circle at 100% 100%, transparent 13px, #7c08f9 13px, #7c08f9 15px, transparent 15px), linear-gradient(to right, #7c08f9, #006eff), radial-gradient(circle at 0% 100%, transparent 13px, #006eff 13px, #006eff 15px, transparent 15px), linear-gradient(to bottom, #006eff, #006eff), radial-gradient(circle at 0% 0%, transparent 13px, #006eff 13px, #006eff 15px, transparent 15px), linear-gradient(to left, #006eff, #7c08f9), radial-gradient(circle at 100% 0%, transparent 13px, #7c08f9 13px, #7c08f9 15px, transparent 15px), linear-gradient(to top, #7c08f9, #7c08f9);
+  background-size: 15px 15px, calc(100% - 30px) 2px, 15px 15px, 2px calc(100% - 30px);
+  background-position: top left,top center,top right,center right, bottom right,bottom center,bottom left,center left;
+  background-repeat: no-repeat;
+}
+
+.button-with-gradient {
+  background-image: radial-gradient(circle at 100% 100%, transparent 18px, #7c08f9 18px, #7c08f9 20px, transparent 20px), linear-gradient(to right, #7c08f9, #006eff), radial-gradient(circle at 0% 100%, transparent 18px, #006eff 18px, #006eff 20px, transparent 20px), linear-gradient(to bottom, #006eff, #006eff), radial-gradient(circle at 0% 0%, transparent 18px, #006eff 18px, #006eff 20px, transparent 20px), linear-gradient(to left, #006eff, #7c08f9), radial-gradient(circle at 100% 0%, transparent 18px, #7c08f9 18px, #7c08f9 20px, transparent 20px), linear-gradient(to top, #7c08f9, #7c08f9);
+  background-size: 20px 20px, calc(100% - 40px) 2px, 20px 20px, 2px calc(100% - 40px);
+  background-position: top left,top center,top right,center right, bottom right,bottom center,bottom left,center left;
+  background-repeat: no-repeat
+}

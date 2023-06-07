@@ -10,7 +10,7 @@ const Footer = (): JSX.Element => {
             <Image src="/icons/threshold-usd.svg" alt="thresholdusd logo" fill={true} sizes="(min-width: 1rem) 24vw" />
           </div>
         </Link>
-        <span className="text-grey">Managed by ThresholdDAO</span>
+        <span className="text-grey">Curated by Threshold Foundation</span>
         <div className="flex justify-start items-center gap-3 mt-2">
           <Link href="https://www.youtube.com/@Threshold.Network" target="_blank" rel="noopener noreferrer">
             <div className="relative w-6 h-6">

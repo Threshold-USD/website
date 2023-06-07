@@ -165,10 +165,10 @@ const Features = (): JSX.Element => {
     <>
       <Header />
       <div className="flex flex-col w-full max-w-7xl px-4 sm:px-12">    
-        <section className="flex flex-col-reverse md:flex-row items-center mt-12 sm:mt-24 m:gap-20 px-4">
+        <section className="flex flex-col-reverse md:flex-row items-center mt-12 sm:mt-12 m:gap-20 px-4">
           <div className="flex flex-col items-center sm:items-start w-full text-center sm:text-left sm:ml-8">
             <span className="text-4xl sm:text-6xl font-bold">Core Features</span>
-            <p className="mt-6 sm:text-15xl font-semibold text-grey">
+            <p className="mt-3 sm:text-xl font-semibold text-grey6">
               First USD-pegged stablecoin underpinned by a decentralized scalable Bitcoin-backed asset.
             </p>
             <div className="flex gap-4 sm:gap-8 mt-10">
@@ -185,8 +185,8 @@ const Features = (): JSX.Element => {
             </div>
           </div>
           <div className="flex justify-center items-center w-full">
-            <div className="relative w-[20rem] h-[18rem] sm:w-[29rem] sm:h-[29rem] saturate-75 sm:saturate-100">
-              <Image src="/hero-banner.svg" alt="herobanner image" fill={true} sizes="(min-width: 1rem) 24vw" />
+            <div className="relative w-[20rem] h-[18rem] sm:w-[29.5rem] sm:h-[29.5rem]">
+              <Image src="/herobanner.svg" alt="herobanner image" fill={true} sizes="(min-width: 1rem) 24vw" />
             </div>
           </div>
         </section>

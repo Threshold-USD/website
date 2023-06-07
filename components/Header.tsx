@@ -25,6 +25,11 @@ const Header = (): JSX.Element => {
                   explore
               </li>
             </Link>
+            <Link href="/governance">
+              <li className={`cursor-pointer uppercase font-bold text-sm py-2 ${router.pathname === '/governance' ? 'border-b-2 border-purple' : 'border-b-2 border-transparent'}`}>
+                governance
+              </li>
+            </Link>
             <Link href="https://docs.threshold.network/applications/threshold-usd" target="_blank" rel="noopener noreferrer">
               <li className="cursor-pointer uppercase font-bold text-sm border-b-2 border-transparent py-2">
                 learn
