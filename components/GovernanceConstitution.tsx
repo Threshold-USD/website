@@ -43,7 +43,7 @@ const SelectedConstitutionPanel = ({ title, description }:SelectedConstitutionPa
       <span className="text-4xl sm:text-xl font-bold">
         {title}
       </span>
-      <p className="font-semibold text-grey6 sm:pr-28">
+      <p className="text-sm lg:text-base font-semibold text-grey6 pr-4 lg:pr-28">
         {description}
       </p>
       <div className="flex mt-1.5">

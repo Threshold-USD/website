@@ -36,9 +36,9 @@ const Governance = (): JSX.Element => {
     <>
       <Header />
       <div className="flex flex-col w-full max-w-7xl">    
-        <section className="flex flex-col-reverse md:flex-row items-center sm:pl-20 z-0">
-          <div className="flex flex-col items-center sm:items-start w-full text-center sm:text-left sm:ml-12">
-            <span className="text-4xl sm:text-55xl font-bold sm:-mt-20">Governance</span>
+        <section className="flex flex-col-reverse md:flex-row items-center xl:pl-20 z-0">
+          <div className="flex flex-col items-center sm:items-start w-full text-center sm:text-left sm:ml-16 xl:ml-12">
+            <span className="text-4xl sm:text-55xl font-bold lg:-mt-20">Governance</span>
             <p className="mt-4 text-lg sm:text-xl font-semibold text-grey6">
               Threshold is community-driven and <br /> governed by an eponymous DAO.
             </p>
@@ -58,7 +58,7 @@ const Governance = (): JSX.Element => {
             </div>
           </div>
         </section>
-        <section className="flex flex-col sm:flex-row items-start gap-7 w-full mt-20 sm:-mt-28 z-10 px-12 sm:px-32 mb-20">
+        <section className="flex flex-col sm:flex-row items-start gap-4 lg:gap-7 w-full mt-20 lg:-mt-28 z-10 px-8 lg:px-16 xl:px-32 mb-20">
           {governancePanels.map((panel, index) => {
             return (
               <GovernancePanel
@@ -75,7 +75,7 @@ const Governance = (): JSX.Element => {
           })}
         </section>
         <div className="relative block border-b border-grey7 mx-32"></div>
-        <section className="flex flex-col gap-16 w-full px-12 sm:px-32 mb-20 mt-12">
+        <section className="flex flex-col gap-16 w-full px-8 lg:px-16 xl:px-32 mb-20 mt-12">
          <GovernanceConstitution/>
         </section>
         <div className="px-12 sm:mt-20">
