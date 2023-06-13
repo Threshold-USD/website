@@ -1,14 +1,10 @@
 import Link from "next/link";
 import { Dispatch, SetStateAction, useState } from "react";
 
-type governanceView = "tokenHolder" | "stakeHolder" | "multisig"
+type governanceView = "tokenHolder" | "multisig"
 
 type GovernernanceConstitution = {
   tokenHolder: {
-    title: string
-    description: string
-  }
-  stakeHolder: {
     title: string
     description: string
   }
@@ -21,11 +17,7 @@ type GovernernanceConstitution = {
 const governanceConstitution: GovernernanceConstitution = {
   tokenHolder: {
     title: "Tokenholder DAO",
-    description: "The Token Holder DAO is in charge of managing the treasury, token issuance, and governance system changes along with holding veto privileges over Staker DAO proposals."
-  },
-  stakeHolder: {
-    title: "Stakeholder DAO",
-    description: "The Staker DAO in Threshold has an active and operational role of being responsible for approving or declining smart contract upgrades and certain protocol parameters."
+    description: "The Token Holder DAO is in charge of managing the treasury, token issuance, and governance system changes."
   },
   multisig: {
     title: "Multisig Council",
@@ -84,7 +76,7 @@ const GovernanceConstitution = (): JSX.Element => {
      <div className="flex flex-col items-center sm:items-start w-full text-center sm:text-left">
         <span className="text-4xl sm:text-35xl font-bold">Governance constitution</span>
         <p className="mt-4 sm:text-lg font-semibold text-grey6">
-          The DAO has three primary bodies:<br />Token Holder DAO, Staker DAO, and the Elected Council.
+          The DAO has two primary bodies:<br />Token Holder DAO and the Elected Council.
         </p>
       </div>
       <div className="flex flex-col sm:flex-row items-start gap-11 w-full">
