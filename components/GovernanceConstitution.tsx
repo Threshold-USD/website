@@ -1,32 +1,23 @@
 import Link from "next/link";
 import { Dispatch, SetStateAction, useState } from "react";
+import LazyText from './LazyText';
 
 type governanceView = "tokenHolder" | "multisig"
 
 type GovernernanceConstitution = {
   tokenHolder: {
-    title: string
-    description: string
+    title: JSX.Element
+    description: JSX.Element
   }
   multisig: {
-    title: string
-    description: string
+    title: JSX.Element
+    description: JSX.Element
   }
 }
 
-const governanceConstitution: GovernernanceConstitution = {
-  tokenHolder: {
-    title: "Tokenholder DAO",
-    description: "The Token Holder DAO is in charge of managing the treasury, token issuance, and governance system changes."
-  },
-  multisig: {
-    title: "Multisig Council",
-    description: "During the on-chain phase, the Elected Council can veto any proposal. This is intended to be an extra security mechanism in the event that a dangerous proposal passes."
-  },
-}
 type SelectedConstitutionPanelProps = {
-  title: string
-  description: string
+  title: JSX.Element
+  description: JSX.Element
 }
 
 const SelectedConstitutionPanel = ({ title, description }:SelectedConstitutionPanelProps): JSX.Element => {
@@ -40,9 +31,9 @@ const SelectedConstitutionPanel = ({ title, description }:SelectedConstitutionPa
       </p>
       <div className="flex mt-1.5">
         <Link href="https://docs.threshold.network/governance/dao/governance-process" target="_blank" rel="noopener noreferrer">
-          <button className="flex items-center gap-2 button-with-gradient bg-transparent text-black text-sm font-bold rounded-full px-10 py-2.5 hover:bg-grey2/20">
-            <span>
-              {"Read More ->"}
+          <button className="flex items-center gap-2 button-with-gradient bg-transparent text-black text-sm font-bold rounded-full px-10 h-10 hover:bg-grey2/20">
+            <span className="flex items-center justify-center">
+              <LazyText text="governancePageButtonCTA" className="h-3.5 w-24" />
             </span>
           </button>
         </Link>
@@ -52,7 +43,7 @@ const SelectedConstitutionPanel = ({ title, description }:SelectedConstitutionPa
 };
 
 type ConstitutionButtonProps = {
-  title: string
+  title: JSX.Element
   governanceView: governanceView
   selectedView: governanceView
   setGovernanceView: Dispatch<SetStateAction<governanceView>>
@@ -69,14 +60,30 @@ const ConstitutionButton = ({ title, governanceView, selectedView, setGovernance
 
 const GovernanceConstitution = (): JSX.Element => {
   const [governanceView, setGovernanceView] = useState<governanceView>("tokenHolder")
+  
+  const governanceConstitution: GovernernanceConstitution = {
+    tokenHolder: {
+      title: <LazyText text="governancePageFirstConstitutionName" className="h-3.5 w-40 sm:w-56" />,
+      description: <LazyText text="governancePageFirstConstitutionDescription" className="h-3.5 w-40 sm:w-56 lg:w-80 xl:w-104" numberOfLines={3} />
+    },
+    multisig: {
+      title: <LazyText text="governancePageSecondConstitutionName" className="h-3.5 w-40 sm:w-56" />,
+      description: <LazyText text="governancePageSecondConstitutionDescription" className="h-3.5 w-40 sm:w-56 lg:w-80 xl:w-104" numberOfLines={3} />
+    },
+  }
+
   const selectedConstitution = governanceConstitution[governanceView as keyof GovernernanceConstitution]
 
   return (
     <>
      <div className="flex flex-col items-center sm:items-start w-full text-center sm:text-left">
-        <span className="text-4xl sm:text-35xl font-bold">Governance constitution</span>
+        <span className="text-4xl sm:text-35xl font-bold">
+          <LazyText text="governancePageConstitutionComponentTitle" className="h-8 w-40 sm:w-60 lg:w-80 xl:w-96" />
+        </span>
         <p className="mt-4 sm:text-lg font-semibold text-grey6">
-          The DAO has two primary bodies:<br />Token Holder DAO and the Elected Council.
+          <LazyText text="governancePageConstitutionComponentSubtitleFirstLine" className="h-4 w-40 sm:w-60 lg:w-80" />
+          <br />
+          <LazyText text="governancePageConstitutionComponentSubtitleSecondLine" className="h-4 w-40 sm:w-60 lg:w-80 xl:w-104" />
         </p>
       </div>
       <div className="flex flex-col sm:flex-row items-start gap-11 w-full">

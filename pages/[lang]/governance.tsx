@@ -1,52 +1,58 @@
 import Link from 'next/link';
-import Header from '../components/Header';
+import Header from '../../components/Header';
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
 import GovernancePanel from '@/components/GovernancePanel';
 import GovernanceConstitution from '@/components/GovernanceConstitution';
-
-const governancePanels = [
-  {
-    imageUrl: "/icons/governance-threshold.svg",
-    imageAlt: "threshold DAO forum icon",
-    title: "DAO Forum",
-    description: "Get active in the Meta governance discussions within the community on the Governance forum.",
-    url: "https://docs.threshold.network/governance/dao/governance-process"
-  },
-  {
-    imageUrl: "/icons/snapshot-logo.svg",
-    imageAlt: "snapshot logo",
-    title: "Snapshot",
-    description: "A decentralized governance platform that makes it easy to create and vote on proposals.",
-    url: "https://snapshot.org/#/threshold.eth"
-  },
-  {
-    imageUrl: "/icons/delegates-icon.svg",
-    imageAlt: "govnernance delegates icon",
-    title: "Delegates",
-    description: "Vote delegation is the process of granting a delegate the power to vote on your behalf.",
-    url: "https://threshold-delegate.vercel.app/"
-  },
-]
+import LazyText from '@/components/LazyText';
 
 const Governance = (): JSX.Element => {
   const [isActivatedOnMount, setIsActivatedOnMount] = useState(true);
+
+  const governancePanels = [
+    {
+      imageUrl: "/icons/governance-threshold.svg",
+      imageAlt: "threshold DAO forum icon",
+      title: <LazyText text="governancePageFirstLinkCardTitle" className="h-3.5 w-40 sm:w-60" />,
+      description: <LazyText text="governancePageFirstLinkCardDescription" className="h-3.5 w-40 sm:w-60" numberOfLines={2} classNameOfLines="h-3.5 w-40 sm:w-60" />,
+      url: "https://docs.threshold.network/governance/dao/governance-process"
+    },
+    {
+      imageUrl: "/icons/snapshot-logo.svg",
+      imageAlt: "snapshot logo",
+      title: <LazyText text="governancePageSecondLinkCardTitle" className="h-3.5 w-40 sm:w-60" />,
+      description: <LazyText text="governancePageSecondLinkCardDescription" className="h-3.5 w-40 sm:w-60" numberOfLines={2} classNameOfLines="h-3.5 w-40 sm:w-60" />,
+      url: "https://snapshot.org/#/threshold.eth"
+    },
+    {
+      imageUrl: "/icons/delegates-icon.svg",
+      imageAlt: "govnernance delegates icon",
+      title: <LazyText text="governancePageThirdLinkCardTitle" className="h-3.5 w-40 sm:w-60" />,
+      description: <LazyText text="governancePageThirdLinkCardDescription" className="h-3.5 w-40 sm:w-60" numberOfLines={2} classNameOfLines="h-3.5 w-40 sm:w-60" />,
+      url: "https://threshold-delegate.vercel.app/"
+    },
+  ]
+
   return (
     <>
       <Header />
       <div className="flex flex-col w-full max-w-7xl">    
         <section className="flex flex-col-reverse md:flex-row items-center xl:pl-20 z-0">
           <div className="flex flex-col items-center sm:items-start w-full text-center sm:text-left sm:ml-16 xl:ml-12">
-            <span className="text-4xl sm:text-55xl font-bold lg:-mt-20">Governance</span>
+            <span className="text-4xl sm:text-55xl font-bold lg:-mt-20">
+              <LazyText text="governancePageTitle" className="h-14 w-40 sm:w-60 lg:w-80" />
+            </span>
             <p className="mt-4 text-lg sm:text-xl font-semibold text-grey6">
-              Threshold is community-driven and <br /> governed by an eponymous DAO.
+              <LazyText text="governancePageSubtitleFirstLine" className="h-3.5 w-40 sm:w-60 lg:w-80" />
+              <br /> 
+              <LazyText text="governancePageSubtitleSecondLine" className="h-3.5 w-40 sm:w-60" />
             </p>
             <div className="flex mt-10">
               <Link href="https://docs.threshold.network/governance/dao" target="_blank" rel="noopener noreferrer">
-                <button className="flex items-center gap-2 button-with-gradient bg-transparent text-black text-sm font-bold rounded-full px-10 py-2.5 hover:opacity-70">
-                  <span>
-                    {"Read More ->"}
+                <button className="flex items-center gap-2 button-with-gradient bg-transparent text-black text-sm font-bold rounded-full px-10 h-10 hover:opacity-70">
+                  <span className="flex items-center justify-center">
+                    <LazyText text="governancePageButtonCTA" className="h-3.5 w-24" />
                   </span>
                 </button>
               </Link>

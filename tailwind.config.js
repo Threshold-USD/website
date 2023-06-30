@@ -226,6 +226,7 @@ module.exports = {
         23: '5.6rem;',
         5.5: '1.375rem',
         50: '12.5rem',
+        69.5: '17.45rem'
       },
       borderOpacity: {
         15: '0.15',

@@ -5,7 +5,7 @@ const nextConfig = {
     path: '',
   },
   reactStrictMode: true,
-  trailingSlash: true,  
+  trailingSlash: true,
 }
 
-module.exports = nextConfig
+module.exports = nextConfig;

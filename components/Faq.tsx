@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 type FaqProps = {
-  question: string
+  question: JSX.Element
   answer: JSX.Element
   opened?: boolean
 }

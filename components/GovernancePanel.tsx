@@ -6,8 +6,8 @@ export type GovernancePanelProps = {
   setIsActivatedOnMount: React.Dispatch<React.SetStateAction<boolean>>
   imageUrl: string
   imageAlt: string
-  title: string
-  description: string
+  title: JSX.Element
+  description: JSX.Element
   url: string
   isActivatedOnMount?: boolean
 }
