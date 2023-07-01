@@ -205,7 +205,7 @@ const Features = (): JSX.Element => {
         <LazyText text="featuresPageThirdFeatureDescription" className="h-3.5 w-40 sm:w-60 lg:w-80" numberOfLines={5} />
       </>,
       isReversed: false,
-      textMargin: "lg:-ml-12"
+      imageSizes: "w-[15rem] h-[15rem] sm:w-[22rem] sm:h-[22rem]",
     },
   ]
 
