@@ -52,17 +52,19 @@ const Footer = (): JSX.Element => {
               <LazyText text="footerFirstMenuNav1" />
             </span>
           </Link>
-          <span className="cursor-pointer hover:text-purple">
-            <LazyText text="footerFirstMenuNav2" />
-          </span>
+          <StaticI18nLink href="/features">
+            <span className="cursor-pointer hover:text-purple">
+              <LazyText text="footerFirstMenuNav2" />
+            </span>
+          </StaticI18nLink>
+          <StaticI18nLink href="/governance">
+            <span className="hover:text-purple">
+            <LazyText text="footerFirstMenuNav3" />
+            </span>
+          </StaticI18nLink>
           <Link href="https://docs.threshold.network/applications/threshold-usd" target="_blank" rel="noopener noreferrer">
             <span className="hover:text-purple">
-              <LazyText text="footerFirstMenuNav3" />
-            </span>
-          </Link>
-          <Link href="https://forum.threshold.network/" target="_blank" rel="noopener noreferrer">
-            <span className="hover:text-purple">
-            <LazyText text="footerFirstMenuNav4" />
+              <LazyText text="footerFirstMenuNav4" />
             </span>
           </Link>
         </div>
