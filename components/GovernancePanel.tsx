@@ -35,10 +35,10 @@ const GovernancePanel = ({ isActivatedOnMount, setIsActivatedOnMount, imageUrl, 
       >
         <div className="flex justify-between w-full">
           <div className="relative w-14 h-14">
-            <Image src={imageUrl} alt={imageAlt} fill={true} sizes="(min-width: 1rem) 24vw" />
+            <Image src={imageUrl} alt={imageAlt} fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
           </div>
           <div className="relative w-5 h-5">
-            <Image src={`${isActivated || isActivatedOnMount ? "/icons/purple-arrow.svg" : "/icons/grey-arrow.svg"}`} alt="Active Arrow" fill={true} sizes="(min-width: 1rem) 24vw" />
+            <Image src={`${isActivated || isActivatedOnMount ? "/icons/purple-arrow.svg" : "/icons/grey-arrow.svg"}`} alt="Active Arrow" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
           </div>
         </div>
         <span className="mt-2 text-15xl font-bold">

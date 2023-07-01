@@ -19,6 +19,7 @@
     "eslint-config-next": "13.3.0",
     "i18next": "^23.2.3",
     "i18next-http-backend": "^2.2.1",
+    "lazy-load-images": "^1.0.1",
     "next": "13.3.0",
     "postcss": "8.4.21",
     "react": "18.2.0",

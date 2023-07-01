@@ -13,7 +13,7 @@ const Header = (): JSX.Element => {
       <div className="flex justify-between mt-4">
         <StaticI18nLink href="/">
           <div className="mt-2 sm:mt-1 relative w-52 sm:w-60 h-3 sm:h-4">
-            <Image src="/icons/threshold-usd.svg" alt="thresholdusd logo" fill={true} sizes="(min-width: 1rem) 24vw" />
+            <Image src="/icons/threshold-usd.svg" alt="thresholdusd logo" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
           </div>
         </StaticI18nLink>
         <nav className="hidden lg:flex -mt-1">

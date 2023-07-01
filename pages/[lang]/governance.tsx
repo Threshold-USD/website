@@ -60,7 +60,7 @@ const Governance = (): JSX.Element => {
           </div>
           <div className="flex justify-center items-center w-full">
             <div className="relative w-[24rem] h-[24rem] sm:w-[40rem] sm:h-[40rem]">
-              <Image src="/governance-banner.svg" alt="herobanner image" fill={true} sizes="(min-width: 1rem) 24vw" />
+              <Image src="/governance-banner.svg" alt="herobanner image" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
             </div>
           </div>
         </section>

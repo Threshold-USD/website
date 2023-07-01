@@ -117,7 +117,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
             <Link href="https://app.thresholdusd.org">
               <button className="flex items-center gap-2 border bg-purple text-white text-xs sm:text-sm font-semibold rounded-lg px-8 sm:px-12 h-11">
                 <div className="relative w-5 h-5">
-                  <Image src="/icons/user-circle.svg" alt="user icon" fill={true} sizes="(min-width: 1rem) 24vw" />
+                  <Image src="/icons/user-circle.svg" alt="user icon" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
                 </div>
                 <span className="flex items-center justify-center">
                   <LazyText text="heroBannerButton" className="w-12 h-3.5" />
@@ -127,7 +127,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
             <Link href="https://youtu.be/VDPNVibbPFI?t=495" target="_blank">
               <button className="flex items-center gap-2 border-2 border-purple text-xs sm:text-sm font-bold rounded-lg px-3 sm:px-9 h-11">
                 <div className="relative w-5.5 h-5.5">
-                  <Image src="/icons/play-circle.svg" alt="play video" fill={true} sizes="(min-width: 1rem) 24vw" />
+                  <Image src="/icons/play-circle.svg" alt="play video" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
                 </div>
                 <span className="flex items-center justify-center">
                   <LazyText text="secondHeroBannerButton" className="w-20 h-3.5" />
@@ -185,7 +185,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
             </span>
             <div className="flex items-start gap-3 mt-4">
               <div className="relative w-6 h-6 pt-0.5">
-                <Image src="/icons/wavy-check.svg" alt="wavy check" fill={true} sizes="(min-width: 1rem) 24vw" />
+                <Image src="/icons/wavy-check.svg" alt="wavy check" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
               </div>
               <div className="flex flex-col gap-2">
                 <span className="font-bold">
@@ -198,7 +198,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
             </div>
             <div className="flex items-start gap-3 mt-3">
               <div className="relative w-6 h-6 pt-0.5">
-                <Image src="/icons/shield-check.svg" alt="shield check" fill={true} sizes="(min-width: 1rem) 24vw" />
+                <Image src="/icons/shield-check.svg" alt="shield check" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
               </div>
               <div className="flex flex-col gap-2">
                 <span className="font-bold">
@@ -211,7 +211,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
             </div>
             <div className="flex items-start gap-3 mt-3">
               <div className="relative w-6 h-6 pt-0.5">
-                <Image src="/icons/note-search.svg" alt="note search" fill={true} sizes="(min-width: 1rem) 24vw" />
+                <Image src="/icons/note-search.svg" alt="note search" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
               </div>
               <div className="flex flex-col gap-2">
                 <span className="font-bold">
@@ -225,7 +225,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
           </div>
           <div className="flex items-center justify-center sm:justify-end w-full">
             <div className="relative w-60 h-60 sm:w-98 sm:h-98">
-              <Image src="/icons/tokens-cards.svg" alt="collateral tokens" fill={true} sizes="(min-width: 1rem) 24vw" />
+              <Image src="/icons/tokens-cards.svg" alt="collateral tokens" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
             </div>
           </div>
         </section>
@@ -241,7 +241,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-4 mt-12">
             <div className="flex flex-col gap-2 max-w-xs">
               <div className="relative w-14 h-14">
-                <Image src="/icons/audit-code.svg" alt="audit code icon" fill={true} sizes="(min-width: 1rem) 24vw" />
+                <Image src="/icons/audit-code.svg" alt="audit code icon" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
               </div>
               <span className="font-bold text-lg mt-2">
               <LazyText text="firstHighlightTitle" className="w-full h-3.5" />
@@ -254,7 +254,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
             </div>
             <div className="flex flex-col gap-2 max-w-xs">
               <div className="relative w-14 h-14">
-                <Image src="/icons/bitcoin.svg" alt="bitcoin icon" fill={true} sizes="(min-width: 1rem) 24vw" />
+                <Image src="/icons/bitcoin.svg" alt="bitcoin icon" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
               </div>
               <span className="font-bold text-lg mt-2">
                 <LazyText text="secondHighlightTitle" className="w-full h-3.5" />
@@ -267,7 +267,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
             </div>
             <div className="flex flex-col gap-2 max-w-xs">
               <div className="relative w-14 h-14">
-                <Image src="/icons/stacked-coins.svg" alt="stacked coins icon" fill={true} sizes="(min-width: 1rem) 24vw" />
+                <Image src="/icons/stacked-coins.svg" alt="stacked coins icon" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
               </div>
               <span className="font-bold text-lg mt-2">
                 <LazyText text="thirdHighlightTitle" className="w-full h-3.5" />
@@ -289,7 +289,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-4 mt-12 sm:mt-5">
             <div className="flex flex-col gap-3 max-w-sm">
               <div className="relative w-7 h-7">
-                <Image src="/icons/question-mark.svg" alt="question mark icon" fill={true} sizes="(min-width: 1rem) 24vw" />
+                <Image src="/icons/question-mark.svg" alt="question mark icon" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
               </div>
               <span className="mt-3 font-semibold">
                 <LazyText text="firstFrequentAskedQuestion" className="w-44 h-3.5" />
@@ -300,7 +300,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
             </div>
             <div className="flex flex-col gap-3 max-w-sm">
               <div className="relative w-7 h-7">
-                <Image src="/icons/question-mark.svg" alt="question mark icon" fill={true} sizes="(min-width: 1rem) 24vw" />
+                <Image src="/icons/question-mark.svg" alt="question mark icon" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
               </div>
               <span className="mt-3 font-semibold">
                 <LazyText text="secondFrequentAskedQuestion" className="w-full h-3.5" />
@@ -321,7 +321,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-4 mt-9">
             <div className="flex flex-col gap-3 max-w-sm">
               <div className="relative w-7 h-7">
-                <Image src="/icons/question-mark.svg" alt="question mark icon" fill={true} sizes="(min-width: 1rem) 24vw" />
+                <Image src="/icons/question-mark.svg" alt="question mark icon" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
               </div>
               <span className="mt-3 font-semibold">
                 <LazyText text="thirdFrequentAskedQuestion" className="w-36 h-3.5" />
@@ -335,7 +335,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
             </div>
             <div className="flex flex-col gap-3 max-w-sm">
               <div className="relative w-7 h-7">
-                <Image src="/icons/question-mark.svg" alt="question mark icon" fill={true} sizes="(min-width: 1rem) 24vw" />
+                <Image src="/icons/question-mark.svg" alt="question mark icon" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
               </div>
               <span className="mt-3 font-semibold">
                 <LazyText text="fourthFrequentAskedQuestion" className="w-full h-3.5" />
@@ -366,7 +366,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
           </div>
           <div className="flex flex-col gap-3 max-w-sm mt-16">
             <div className="relative w-7 h-7">
-              <Image src="/icons/question-mark.svg" alt="question mark icon" fill={true} sizes="(min-width: 1rem) 24vw" />
+              <Image src="/icons/question-mark.svg" alt="question mark icon" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
             </div>
             <span className="mt-3 font-semibold">
               <LazyText text="frequentAskedQuestionCTATitle" />
@@ -395,7 +395,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
             <Link href="https://discord.com/invite/threshold" target="_blank">
               <div className="flex flex-col items-center gap-3">
                 <div className="relative w-7 sm:w-10 h-5 sm:h-8">
-                  <Image src="/icons/discord.svg" alt="discord logo" fill={true} sizes="(min-width: 1rem) 24vw" />
+                  <Image src="/icons/discord.svg" alt="discord logo" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
                 </div>
                 <span className="text-xs sm:text-sm font-bold">
                   <LazyText text="firstSocialNetwork" />
@@ -405,7 +405,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
             <Link href="https://forum.threshold.network/" target="_blank">
               <div className="flex flex-col items-center gap-3">
                 <div className="relative w-8 sm:w-11 h-4.5 sm:h-7.5 mt-0.5">
-                  <Image src="/icons/threshold.svg" alt="Threshold logo" fill={true} sizes="(min-width: 1rem) 24vw" />
+                  <Image src="/icons/threshold.svg" alt="Threshold logo" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
                 </div>
                 <span className="text-xs sm:text-sm font-bold">
                   <LazyText text="secondSocialNetwork" />
@@ -415,7 +415,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
             <Link href="https://twitter.com/ThresholdUSD" target="_blank">
               <div className="flex flex-col items-center gap-3">
                 <div className="relative w-7 sm:w-10 h-5 sm:h-8">
-                  <Image src="/icons/twitter.svg" alt="twitter logo" fill={true} sizes="(min-width: 1rem) 24vw" />
+                  <Image src="/icons/twitter.svg" alt="twitter logo" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
                 </div>
                 <span className="text-xs sm:text-sm font-bold">
                   <LazyText text="thirdSocialNetwork" />

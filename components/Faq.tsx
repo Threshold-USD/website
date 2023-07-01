@@ -27,7 +27,13 @@ const Faq = ({ question, answer, opened }: FaqProps): JSX.Element => {
           className={`transform transition-transform duration-300 ${isOpen && 'rotate-180 text-purple'}`}
         >
           <div className="relative w-[1.2rem] h-[1.2em]">
-            <Image src={isOpen ? '/icons/purple-chevron.svg' : '/icons/chevron.svg'} alt="arrow caret" fill={true} sizes="(min-width: 1rem) 24vw" />
+            <Image 
+              src={isOpen ? '/icons/purple-chevron.svg' : '/icons/chevron.svg'} 
+              alt="arrow caret" 
+              fill={true} 
+              sizes="(min-width: 1rem) 24vw"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>

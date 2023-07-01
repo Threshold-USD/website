@@ -226,7 +226,7 @@ const Features = (): JSX.Element => {
               <Link href="https://appthresholdusd.org">
                 <button className="flex items-center gap-2 border bg-purple text-white text-xs sm:text-sm font-semibold rounded-full px-12 h-11">
                   <div className="relative w-5 h-5">
-                    <Image src="/icons/user-circle.svg" alt="user icon" fill={true} sizes="(min-width: 1rem) 24vw" />
+                    <Image src="/icons/user-circle.svg" alt="user icon" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
                   </div>
                   <span className="flex items-center justify-center">
                     <LazyText text="featuresPageHeroBannerButton" className="h-3.5 w-10" />
@@ -237,7 +237,7 @@ const Features = (): JSX.Element => {
           </div>
           <div className="flex justify-center items-center w-full">
             <div className="relative w-[20rem] h-[18rem] sm:w-[29.5rem] sm:h-[29.5rem]">
-              <Image src="/herobanner.svg" alt="herobanner image" fill={true} sizes="(min-width: 1rem) 24vw" />
+              <Image src="/herobanner.svg" alt="herobanner image" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
             </div>
           </div>
         </section>
@@ -264,7 +264,7 @@ const Features = (): JSX.Element => {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 mt-12 sm:mt-20">
             <div className="flex flex-col items-center sm:items-start gap-2 max-w-xs">
               <div className="relative w-14 h-14">
-                <Image src="/icons/notebook.svg" alt="notebook icon" fill={true} sizes="(min-width: 1rem) 24vw" />
+                <Image src="/icons/notebook.svg" alt="notebook icon" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
               </div>
               <span className="text-center font-bold text-lg mt-2">
                 <LazyText text="featuresPageFirstResourceTitle" className="h-4 w-40 sm:w-60" />
@@ -281,7 +281,7 @@ const Features = (): JSX.Element => {
             </div>
             <div className="flex flex-col items-center sm:items-start gap-2 max-w-xs">
               <div className="relative w-12 h-12 mb-2">
-                <Image src="/icons/github.svg" alt="github icon" fill={true} sizes="(min-width: 1rem) 24vw" />
+                <Image src="/icons/github.svg" alt="github icon" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
               </div>
               <span className="text-center font-bold text-lg mt-2">
                 <LazyText text="featuresPageSecondResourceTitle" className="h-4 w-40 sm:w-48" />
@@ -298,7 +298,7 @@ const Features = (): JSX.Element => {
             </div>
             <div className="flex flex-col items-center sm:items-start gap-2 max-w-xs">
               <div className="relative w-11 h-11 mb-3">
-                <Image src="/icons/tbtc.svg" alt="tbtc dashboard icon" fill={true} sizes="(min-width: 1rem) 24vw" />
+                <Image src="/icons/tbtc.svg" alt="tbtc dashboard icon" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
               </div>
               <span className="text-center font-bold text-lg mt-2">
                 <LazyText text="featuresPageThirdResourceTitle" className="h-4 w-28" />

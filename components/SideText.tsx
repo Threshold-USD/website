@@ -10,7 +10,7 @@ const SideText = ({ imageUrl, imageAlt, title, description, isReversed, imageSiz
     <div className={`flex flex-col ${isReversed ? "md:flex-row-reverse" : "md:flex-row"} items-center gap-8 ${gap ?? "sm:gap-0"} w-full px-2`}>
       <div className="flex justify-center items-center w-full">
         <div className={`relative ${imageSizes ?? "w-[14rem] h-[14rem] sm:w-[20rem] sm:h-[20rem]"}`}>
-          <Image src={imageUrl} alt={imageAlt} fill={true} sizes="(min-width: 1rem) 24vw" />
+          <Image src={imageUrl} alt={imageAlt} fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
         </div>
       </div>
       <div className={`flex justify-center items-center ${textMargin} w-full text-center sm:text-left z-10`}>

@@ -10,7 +10,7 @@ const Footer = (): JSX.Element => {
       <div className="flex flex-col items-center sm:items-start justify-center sm:justify-start gap-7 w-full">
         <StaticI18nLink href="/">
           <div className="mt-2 sm:mt-1 relative w-52 sm:w-72 h-3 sm:h-6">
-            <Image src="/icons/threshold-usd.svg" alt="thresholdusd logo" fill={true} sizes="(min-width: 1rem) 24vw" />
+            <Image src="/icons/threshold-usd.svg" alt="thresholdusd logo" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
           </div>
         </StaticI18nLink>
         <span className="text-grey">
@@ -19,22 +19,22 @@ const Footer = (): JSX.Element => {
         <div className="flex justify-start items-center gap-3 mt-2">
           <Link href="https://www.youtube.com/@Threshold.Network" target="_blank" rel="noopener noreferrer">
             <div className="relative w-6 h-6">
-              <Image src="/icons/footer-youtube.svg" alt="youtube logo" fill={true} sizes="(min-width: 1rem) 24vw" />
+              <Image src="/icons/footer-youtube.svg" alt="youtube logo" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
             </div>
           </Link>
           <Link href="https://twitter.com/TheTNetwork" target="_blank" rel="noopener noreferrer">
             <div className="relative w-6 h-6">
-              <Image src="/icons/footer-twitter.svg" alt="twitter logo" fill={true} sizes="(min-width: 1rem) 24vw" />
+              <Image src="/icons/footer-twitter.svg" alt="twitter logo" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
             </div>
           </Link>
           <Link href="https://discord.com/invite/Threshold" target="_blank" rel="noopener noreferrer">
             <div className="relative w-6 h-6">
-              <Image src="/icons/footer-discord.svg" alt="discord logo" fill={true} sizes="(min-width: 1rem) 24vw" />
+              <Image src="/icons/footer-discord.svg" alt="discord logo" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
             </div>
           </Link>
           <Link href="https://github.com/Threshold-USD/dev" target="_blank" rel="noopener noreferrer">
             <div className="relative w-6 h-6">
-              <Image src="/icons/github.svg" alt="github logo" fill={true} sizes="(min-width: 1rem) 24vw" />
+              <Image src="/icons/github.svg" alt="github logo" fill={true} sizes="(min-width: 1rem) 24vw" loading="lazy" />
             </div>
           </Link>
         </div>
