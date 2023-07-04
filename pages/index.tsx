@@ -19,8 +19,13 @@ export default function Home() {
     const localStorageLang = localStorage.getItem('lang');
     const browserLang = navigator.language;
     const userLang =
-      localStorageLang || (browserLang.startsWith('pt') ? 'pt' : browserLang.startsWith('es') ? 'es' : 'en');
-    
+      localStorageLang ||
+      (browserLang.startsWith('pt')
+        ? 'pt'
+        : browserLang.startsWith('es')
+        ? 'es'
+        : 'en');
+
     if (!localStorageLang) {
       localStorage.setItem('lang', userLang);
     }
@@ -28,11 +33,5 @@ export default function Home() {
     router.replace(`/${userLang}`);
   }, [loading]);
 
-  return (
-    <>
-      {loading && (
-        <Loading />
-      )}
-    </>
-  );
+  return <>{loading && <Loading />}</>;
 }

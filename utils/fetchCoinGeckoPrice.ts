@@ -1,4 +1,4 @@
-import { Decimal } from "./Decimal";
+import { Decimal } from './Decimal';
 
 type CoinGeckoSimplePriceResponse<T extends string, U extends string> = {
   [P in T]: {
@@ -6,14 +6,20 @@ type CoinGeckoSimplePriceResponse<T extends string, U extends string> = {
   };
 };
 
-const hasProp = <T, P extends string>(o: any, p: P): o is T & { [_ in P]: unknown } => p in o;
+const hasProp = <T, P extends string>(
+  o: any,
+  p: P,
+): o is T & { [_ in P]: unknown } => p in o;
 
-const validateCoinGeckoSimplePriceResponse = <T extends string, U extends string>(
+const validateCoinGeckoSimplePriceResponse = <
+  T extends string,
+  U extends string,
+>(
   expectedCoinIds: readonly T[],
   expectedCurrencies: readonly U[],
-  body: unknown
+  body: unknown,
 ): CoinGeckoSimplePriceResponse<T, U> => {
-  if (typeof body !== "object" || body === null) {
+  if (typeof body !== 'object' || body === null) {
     throw new Error(`unexpected response from CoinGecko`);
   }
 
@@ -26,11 +32,15 @@ const validateCoinGeckoSimplePriceResponse = <T extends string, U extends string
 
     for (const currency of expectedCurrencies) {
       if (!hasProp(coinPrices, currency)) {
-        throw new Error(`currency "${currency}" missing from CoinGecko response`);
+        throw new Error(
+          `currency "${currency}" missing from CoinGecko response`,
+        );
       }
 
-      if (typeof coinPrices[currency] !== "number") {
-        throw new Error(`price of coin "${coinId}" in currency "${currency}" is not a number`);
+      if (typeof coinPrices[currency] !== 'number') {
+        throw new Error(
+          `price of coin "${coinId}" in currency "${currency}" is not a number`,
+        );
       }
     }
   }
@@ -40,34 +50,43 @@ const validateCoinGeckoSimplePriceResponse = <T extends string, U extends string
 
 const fetchCoinGeckoSimplePrice = async <T extends string, U extends string>(
   coinIds: readonly T[],
-  vsCurrencies: readonly U[]
+  vsCurrencies: readonly U[],
 ): Promise<CoinGeckoSimplePriceResponse<T, U>> => {
   const simplePriceUrl =
-    "https://api.coingecko.com/api/v3/simple/price?" +
+    'https://api.coingecko.com/api/v3/simple/price?' +
     new URLSearchParams({
-      ids: coinIds.join(","),
-      vs_currencies: vsCurrencies.join(",")
+      ids: coinIds.join(','),
+      vs_currencies: vsCurrencies.join(','),
     });
 
   const response = await fetch(simplePriceUrl, {
     headers: {
-      accept: "application/json"
-    }
+      accept: 'application/json',
+    },
   });
 
   if (!response.ok) {
-    console.error(response.status)
+    console.error(response.status);
   }
 
-  return validateCoinGeckoSimplePriceResponse(coinIds, vsCurrencies, await response.json());
+  return validateCoinGeckoSimplePriceResponse(
+    coinIds,
+    vsCurrencies,
+    await response.json(),
+  );
 };
 
 export type tokenPriceResponse = {
   tokenPriceUSD: Decimal;
-}
+};
 
-export const fetchCoinGeckoPrice = async ( coingeckoId: string ): Promise<tokenPriceResponse> => {
-  const response = await fetchCoinGeckoSimplePrice([coingeckoId] as const, ["usd"] as const);
+export const fetchCoinGeckoPrice = async (
+  coingeckoId: string,
+): Promise<tokenPriceResponse> => {
+  const response = await fetchCoinGeckoSimplePrice(
+    [coingeckoId] as const,
+    ['usd'] as const,
+  );
   return {
     tokenPriceUSD: Decimal.from(response[coingeckoId].usd),
   };

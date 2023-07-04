@@ -7,10 +7,16 @@ interface StaticI18nLinkProps {
   children: ReactNode;
   href?: string;
   locale?: string;
-  switchLocale?: boolean
+  switchLocale?: boolean;
 }
 
-export function StaticI18nLink({ href, locale: localeProp, children, switchLocale, ...props }: StaticI18nLinkProps) {
+export function StaticI18nLink({
+  href,
+  locale: localeProp,
+  children,
+  switchLocale,
+  ...props
+}: StaticI18nLinkProps) {
   const { i18n } = useTranslation();
   const { asPath } = useRouter();
 

@@ -1,6 +1,5 @@
-// tailwind.config.js
-const { fontFamily } = require('tailwindcss/defaultTheme')
-
+// tailwind.config.jscconst { fontFamily } = require('tailwindcss/defaultTheme');
+import { fontFamily } from 'tailwindcss/defaultTheme';
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -9,6 +8,7 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
     './app/**/*.{js,ts,jsx,tsx}',
   ],
+  darkMode: 'class',
   theme: {
     colors: {
       transparent: '#ffffff00',
@@ -32,6 +32,7 @@ module.exports = {
       blue15: '#4b5184',
       blue16: '#2d315b',
       blue17: '#2f335e',
+      darkBlue: '#0C0D0F',
       grey: '#7A7A8F',
       grey2: '#D9D9D9',
       grey3: '#A4A7BF',
@@ -100,7 +101,7 @@ module.exports = {
     },
     extend: {
       saturate: {
-        75: '.75'
+        75: '.75',
       },
       zIndex: {
         1: '1',
@@ -129,7 +130,7 @@ module.exports = {
         xss: '19.5rem',
         llg: '30rem',
         '55xl': '68rem',
-        '8xl': '88rem'
+        '8xl': '88rem',
       },
       maxHeight: {
         76: '19rem',
@@ -186,11 +187,11 @@ module.exports = {
         'extra-loose': '2.3',
       },
       fontSize: {
-        'xxs': '.8rem',
-        'smallbase': '0.95rem',
-        'x0': '1.20rem',
+        xxs: '.8rem',
+        smallbase: '0.95rem',
+        x0: '1.20rem',
         '15xl': '1.3rem',
-        'x11': '1.35rem',
+        x11: '1.35rem',
         '1p4': '1.4rem',
         '25xl': '1.7rem',
         '45xl': '2.55rem',
@@ -226,7 +227,7 @@ module.exports = {
         23: '5.6rem;',
         5.5: '1.375rem',
         50: '12.5rem',
-        69.5: '17.45rem'
+        69.5: '17.45rem',
       },
       borderOpacity: {
         15: '0.15',
@@ -242,4 +243,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};

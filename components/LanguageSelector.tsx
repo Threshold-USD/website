@@ -1,8 +1,8 @@
-import Image from "next/image";
+import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
-import { useEffect, useRef, useState } from "react";
-import { StaticI18nLink } from "./StaticI18nLink";
-import LazyText from "./LazyText";
+import { useEffect, useRef, useState } from 'react';
+import { StaticI18nLink } from './StaticI18nLink';
+import LazyText from './LazyText';
 
 const LanguageSelector = (): JSX.Element => {
   const { i18n } = useTranslation();
@@ -11,7 +11,10 @@ const LanguageSelector = (): JSX.Element => {
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as HTMLElement)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as HTMLElement)
+      ) {
         setIsDropdownOpen(false);
       }
     }
@@ -25,21 +28,31 @@ const LanguageSelector = (): JSX.Element => {
   const handleDropdownToggle = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
-  
+
   return (
     <div className="relative" ref={dropdownRef}>
       <button
-        className="flex gap-2 items-center bg-transparent border-0 cursor-pointer p-1 focus:outline-none"
+        className="flex gap-2 items-center bg-transparent border-0 cursor-pointer p-1 focus:outline-none dark:text-grey3"
         onClick={handleDropdownToggle}
       >
-        <Image src="/icons/globe.svg" alt="Language" width={24} height={24} loading="lazy" />
-        <span>
-          {i18n.language.toUpperCase()}
-        </span>
-        <Image src="/icons/arrow-down.svg" alt="Arrow Down" width={8} height={8} loading="lazy" />
+        <Image
+          src="/icons/globe.svg"
+          alt="Language"
+          width={24}
+          height={24}
+          loading="lazy"
+        />
+        <span>{i18n.language.toUpperCase()}</span>
+        <Image
+          src="/icons/arrow-down.svg"
+          alt="Arrow Down"
+          width={8}
+          height={8}
+          loading="lazy"
+        />
       </button>
       {isDropdownOpen && (
-        <div className="absolute top-full right-0 mt-2 w-36 bg-white border border-gray-300 rounded shadow-lg z-10">
+        <div className="absolute top-full right-0 mt-2 w-36 bg-white border border-gray-300 rounded shadow-lg z-10 dark:text-black">
           <ul>
             <StaticI18nLink locale="/en" switchLocale>
               <li className="cursor-pointer py-2 px-4 hover:bg-grey5">
@@ -59,7 +72,7 @@ const LanguageSelector = (): JSX.Element => {
           </ul>
         </div>
       )}
-    </div>  
+    </div>
   );
 };
 

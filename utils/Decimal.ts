@@ -1,10 +1,11 @@
-import assert from "assert";
+import assert from 'assert';
 
-import { BigNumber } from "@ethersproject/bignumber";
+import { BigNumber } from '@ethersproject/bignumber';
 
 const getDigits = (numDigits: number) => TEN.pow(numDigits);
 
-const MAX_UINT_256 = "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff";
+const MAX_UINT_256 =
+  '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff';
 const PRECISION = 18;
 const ONE = BigNumber.from(1);
 const TEN = BigNumber.from(10);
@@ -12,9 +13,10 @@ const DIGITS = getDigits(PRECISION);
 
 const stringRepresentationFormat = /^[0-9]*(\.[0-9]*)?(e[-+]?[0-9]+)?$/;
 const trailingZeros = /0*$/;
-const magnitudes = ["", "K", "M", "B", "T"];
+const magnitudes = ['', 'K', 'M', 'B', 'T'];
 
-const roundedMul = (x: BigNumber, y: BigNumber) => x.mul(y).add(Decimal.HALF.hex).div(DIGITS);
+const roundedMul = (x: BigNumber, y: BigNumber) =>
+  x.mul(y).add(Decimal.HALF.hex).div(DIGITS);
 
 /**
  * Types that can be converted into a Decimal.
@@ -52,7 +54,7 @@ export class Decimal {
 
   private constructor(bigNumber: BigNumber) {
     if (bigNumber.isNegative()) {
-      throw new Error("negatives not supported by Decimal");
+      throw new Error('negatives not supported by Decimal');
     }
 
     this._bigNumber = bigNumber;
@@ -71,36 +73,38 @@ export class Decimal {
       throw new Error(`bad decimal format: "${representation}"`);
     }
 
-    if (representation.includes("e")) {
+    if (representation.includes('e')) {
       // eslint-disable-next-line prefer-const
-      let [coefficient, exponent] = representation.split("e");
+      let [coefficient, exponent] = representation.split('e');
 
-      if (exponent.startsWith("-")) {
+      if (exponent.startsWith('-')) {
         return new Decimal(
           Decimal._fromString(coefficient)._bigNumber.div(
-            TEN.pow(BigNumber.from(exponent.substr(1)))
-          )
+            TEN.pow(BigNumber.from(exponent.substr(1))),
+          ),
         );
       }
 
-      if (exponent.startsWith("+")) {
+      if (exponent.startsWith('+')) {
         exponent = exponent.substr(1);
       }
 
       return new Decimal(
-        Decimal._fromString(coefficient)._bigNumber.mul(TEN.pow(BigNumber.from(exponent)))
+        Decimal._fromString(coefficient)._bigNumber.mul(
+          TEN.pow(BigNumber.from(exponent)),
+        ),
       );
     }
 
-    if (!representation.includes(".")) {
+    if (!representation.includes('.')) {
       return new Decimal(BigNumber.from(representation).mul(DIGITS));
     }
 
     // eslint-disable-next-line prefer-const
-    let [characteristic, mantissa] = representation.split(".");
+    let [characteristic, mantissa] = representation.split('.');
 
     if (mantissa.length < PRECISION) {
-      mantissa += "0".repeat(PRECISION - mantissa.length);
+      mantissa += '0'.repeat(PRECISION - mantissa.length);
     } else {
       mantissa = mantissa.substr(0, PRECISION);
     }
@@ -108,24 +112,24 @@ export class Decimal {
     return new Decimal(
       BigNumber.from(characteristic || 0)
         .mul(DIGITS)
-        .add(mantissa)
+        .add(mantissa),
     );
   }
 
   static from(decimalish: Decimalish): Decimal {
     switch (typeof decimalish) {
-      case "object":
+      case 'object':
         if (decimalish instanceof Decimal) {
           return decimalish;
         } else {
-          throw new Error("invalid Decimalish value");
+          throw new Error('invalid Decimalish value');
         }
-      case "string":
+      case 'string':
         return Decimal._fromString(decimalish);
-      case "number":
+      case 'number':
         return Decimal._fromString(decimalish.toString());
       default:
-        throw new Error("invalid Decimalish value");
+        throw new Error('invalid Decimalish value');
     }
   }
 
@@ -136,9 +140,9 @@ export class Decimal {
     if (mantissa.isZero()) {
       return characteristic.toString();
     } else {
-      const paddedMantissa = mantissa.toString().padStart(PRECISION, "0");
-      const trimmedMantissa = paddedMantissa.replace(trailingZeros, "");
-      return characteristic.toString() + "." + trimmedMantissa;
+      const paddedMantissa = mantissa.toString().padStart(PRECISION, '0');
+      const trimmedMantissa = paddedMantissa.replace(trailingZeros, '');
+      return characteristic.toString() + '.' + trimmedMantissa;
     }
   }
 
@@ -149,25 +153,26 @@ export class Decimal {
 
   private _toStringWithPrecision(precision: number) {
     if (precision < 0) {
-      throw new Error("precision must not be negative");
+      throw new Error('precision must not be negative');
     }
 
-    const value = precision < PRECISION ? this._roundUp(precision) : this._bigNumber;
+    const value =
+      precision < PRECISION ? this._roundUp(precision) : this._bigNumber;
     const characteristic = value.div(DIGITS);
     const mantissa = value.mod(DIGITS);
 
     if (precision === 0) {
       return characteristic.toString();
     } else {
-      const paddedMantissa = mantissa.toString().padStart(PRECISION, "0");
+      const paddedMantissa = mantissa.toString().padStart(PRECISION, '0');
       const trimmedMantissa = paddedMantissa.substr(0, precision);
-      return characteristic.toString() + "." + trimmedMantissa;
+      return characteristic.toString() + '.' + trimmedMantissa;
     }
   }
 
   toString(precision?: number): string {
     if (this.infinite) {
-      return "∞";
+      return '∞';
     } else if (precision !== undefined) {
       return this._toStringWithPrecision(precision);
     } else {
@@ -176,18 +181,28 @@ export class Decimal {
   }
 
   prettify(precision = 2): string {
-    const [characteristic, mantissa] = this.toString(precision).split(".");
-    const prettyCharacteristic = characteristic.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    const [characteristic, mantissa] = this.toString(precision).split('.');
+    const prettyCharacteristic = characteristic.replace(
+      /(\d)(?=(\d{3})+(?!\d))/g,
+      '$1,',
+    );
 
-    return mantissa !== undefined ? prettyCharacteristic + "." + mantissa : prettyCharacteristic;
+    return mantissa !== undefined
+      ? prettyCharacteristic + '.' + mantissa
+      : prettyCharacteristic;
   }
 
   shorten(): string {
     const characteristicLength = this.toString(0).length;
-    const magnitude = Math.min(Math.floor((characteristicLength - 1) / 3), magnitudes.length - 1);
+    const magnitude = Math.min(
+      Math.floor((characteristicLength - 1) / 3),
+      magnitudes.length - 1,
+    );
 
     const precision = Math.max(3 * (magnitude + 1) - characteristicLength, 0);
-    const normalized = this.div(new Decimal(getDigits(PRECISION + 3 * magnitude)));
+    const normalized = this.div(
+      new Decimal(getDigits(PRECISION + 3 * magnitude)),
+    );
 
     return normalized.prettify(precision) + magnitudes[magnitude];
   }
@@ -197,11 +212,15 @@ export class Decimal {
   }
 
   sub(subtrahend: Decimalish): Decimal {
-    return new Decimal(this._bigNumber.sub(Decimal.from(subtrahend)._bigNumber));
+    return new Decimal(
+      this._bigNumber.sub(Decimal.from(subtrahend)._bigNumber),
+    );
   }
 
   mul(multiplier: Decimalish): Decimal {
-    return new Decimal(this._bigNumber.mul(Decimal.from(multiplier)._bigNumber).div(DIGITS));
+    return new Decimal(
+      this._bigNumber.mul(Decimal.from(multiplier)._bigNumber).div(DIGITS),
+    );
   }
 
   div(divider: Decimalish): Decimal {
@@ -223,7 +242,10 @@ export class Decimal {
     }
 
     return new Decimal(
-      this._bigNumber.mul(DIGITS).add(divider._bigNumber.sub(ONE)).div(divider._bigNumber)
+      this._bigNumber
+        .mul(DIGITS)
+        .add(divider._bigNumber.sub(ONE))
+        .div(divider._bigNumber),
     );
   }
 
@@ -235,7 +257,9 @@ export class Decimal {
       return Decimal.INFINITY;
     }
 
-    return new Decimal(this._bigNumber.mul(multiplier._bigNumber).div(divider._bigNumber));
+    return new Decimal(
+      this._bigNumber.mul(multiplier._bigNumber).div(divider._bigNumber),
+    );
   }
 
   pow(exponent: number): Decimal {
@@ -332,7 +356,10 @@ export class Decimal {
   }
 }
 
-type DifferenceRepresentation = { sign: "" | "+" | "-"; absoluteValue: Decimal };
+type DifferenceRepresentation = {
+  sign: '' | '+' | '-';
+  absoluteValue: Decimal;
+};
 
 /** @alpha */
 export class Difference {
@@ -342,7 +369,10 @@ export class Difference {
     this._number = number;
   }
 
-  static between(d1: Decimalish | undefined, d2: Decimalish | undefined): Difference {
+  static between(
+    d1: Decimalish | undefined,
+    d2: Decimalish | undefined,
+  ): Difference {
     if (d1 === undefined || d2 === undefined) {
       return new Difference(undefined);
     }
@@ -353,21 +383,27 @@ export class Difference {
     if (d1.infinite && d2.infinite) {
       return new Difference(undefined);
     } else if (d1.infinite) {
-      return new Difference({ sign: "+", absoluteValue: d1 });
+      return new Difference({ sign: '+', absoluteValue: d1 });
     } else if (d2.infinite) {
-      return new Difference({ sign: "-", absoluteValue: d2 });
+      return new Difference({ sign: '-', absoluteValue: d2 });
     } else if (d1.gt(d2)) {
-      return new Difference({ sign: "+", absoluteValue: Decimal.from(d1).sub(d2) });
+      return new Difference({
+        sign: '+',
+        absoluteValue: Decimal.from(d1).sub(d2),
+      });
     } else if (d2.gt(d1)) {
-      return new Difference({ sign: "-", absoluteValue: Decimal.from(d2).sub(d1) });
+      return new Difference({
+        sign: '-',
+        absoluteValue: Decimal.from(d2).sub(d1),
+      });
     } else {
-      return new Difference({ sign: "", absoluteValue: Decimal.ZERO });
+      return new Difference({ sign: '', absoluteValue: Decimal.ZERO });
     }
   }
 
   toString(precision?: number): string {
     if (!this._number) {
-      return "N/A";
+      return 'N/A';
     }
 
     return this._number.sign + this._number.absoluteValue.toString(precision);
@@ -382,7 +418,7 @@ export class Difference {
   }
 
   nonZeroish(precision: number): this | undefined {
-    const zeroish = `0.${"0".repeat(precision)}5`;
+    const zeroish = `0.${'0'.repeat(precision)}5`;
 
     if (this._number?.absoluteValue.gte(zeroish)) {
       return this;
@@ -393,8 +429,8 @@ export class Difference {
     return new Difference(
       this._number && {
         sign: this._number.sign,
-        absoluteValue: this._number.absoluteValue.mul(multiplier)
-      }
+        absoluteValue: this._number.absoluteValue.mul(multiplier),
+      },
     );
   }
 
@@ -403,11 +439,11 @@ export class Difference {
   }
 
   get positive(): this | undefined {
-    return this._number?.sign === "+" ? this : undefined;
+    return this._number?.sign === '+' ? this : undefined;
   }
 
   get negative(): this | undefined {
-    return this._number?.sign === "-" ? this : undefined;
+    return this._number?.sign === '-' ? this : undefined;
   }
 
   get absoluteValue(): Decimal | undefined {
@@ -433,7 +469,7 @@ export class Percent<
   },
   A extends {
     gte(n: string): boolean;
-  }
+  },
 > {
   private _percent: T;
 
@@ -442,7 +478,7 @@ export class Percent<
   }
 
   nonZeroish(precision: number): this | undefined {
-    const zeroish = `0.${"0".repeat(precision)}5`;
+    const zeroish = `0.${'0'.repeat(precision)}5`;
 
     if (this._percent.absoluteValue?.gte(zeroish)) {
       return this;
@@ -452,14 +488,14 @@ export class Percent<
   toString(precision: number): string {
     return (
       this._percent.toString(precision) +
-      (this._percent.absoluteValue && !this._percent.infinite ? "%" : "")
+      (this._percent.absoluteValue && !this._percent.infinite ? '%' : '')
     );
   }
 
   prettify(): string {
-    if (this._percent.absoluteValue?.gte("1000")) {
+    if (this._percent.absoluteValue?.gte('1000')) {
       return this.toString(0);
-    } else if (this._percent.absoluteValue?.gte("10")) {
+    } else if (this._percent.absoluteValue?.gte('10')) {
       return this.toString(1);
     } else {
       return this.toString(2);
