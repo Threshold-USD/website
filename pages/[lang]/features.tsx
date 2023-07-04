@@ -490,7 +490,7 @@ const Features = (): JSX.Element => {
             <div className="flex flex-col items-center sm:items-start gap-2 max-w-xs">
               <div className="relative w-12 h-12 mb-2">
                 <Image
-                  src="/icons/github.svg"
+                  src="/icons/github-section.svg"
                   alt="github icon"
                   fill={true}
                   sizes="(min-width: 1rem) 24vw"
