@@ -130,7 +130,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
       <Header />
       <div className="flex flex-col w-full max-w-5xl px-6 sm:px-12 dark:text-white">
         <section className="flex flex-col items-center justify-center gap-4 mt-32">
-          <h1 className="max-w-4xl text-center">
+          <h1 className="max-w-4xl text-center leading-[5.25rem]">
             <LazyText
               text="heroBannerTitle"
               className="h-16 w-56 sm:w-96 -mt-4"
@@ -216,7 +216,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
                 <LazyText text="cardsBelow" />
               </span>
             </div>
-            <div className="flex flex-col justify-center gap-1 border-l border-grey2 dark:border-grey/40 px-12 lg:px-16 xl:px-14 py-6 text-center w-60 sm:w-80">
+            <div className="flex flex-col justify-center gap-1 border-l border-grey2 dark:border-grey/40 px-12 lg:px-16 xl:px-14 py-6 text-center w-60 sm:w-80 pb-12">
               <span className="text-sm font-semibold text-grey text-center dark:text-white">
                 <LazyText text="card3" />
               </span>
@@ -229,9 +229,6 @@ export default function Home({ data }: HomeProps): JSX.Element {
                   )}
                 </span>
               </div>
-              <span className="text-xs font-semibold text-grey3">
-                <LazyText text="cardsBelow" />
-              </span>
             </div>
           </div>
         </section>
@@ -353,13 +350,6 @@ export default function Home({ data }: HomeProps): JSX.Element {
               className="w-full sm:w-96 h-8"
             />
           </h2>
-          <p className="text-grey font-medium sm:text-lg mt-6 dark:text-grey3">
-            <LazyText
-              text="highlightsComponentSubTitle"
-              className="w-full h-4"
-              numberOfLines={2}
-            />
-          </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-4 mt-12">
             <div className="flex flex-col gap-2 max-w-xs">
               <div className="relative w-14 h-14">
