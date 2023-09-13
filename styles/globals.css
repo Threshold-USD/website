@@ -10,8 +10,8 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: white;
-  background-color: white;
+  background: #fff;
+  background-color: #fff;
 }
 
 @media only screen and (max-width: 768px) {
