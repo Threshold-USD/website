@@ -13,7 +13,7 @@ const Footer = (): JSX.Element => {
     <section className="flex flex-col-reverse sm:flex-row gap-20 sm:gap-12 items-start justify-between mt-4 sm:mt-12 mb-20 sm:mb-32 w-full">
       <div className="flex flex-col items-center sm:items-start justify-center sm:justify-start gap-7 w-full">
         <StaticI18nLink href="/">
-          <div className="mt-2 sm:mt-1 relative w-52 sm:w-60 h-3 sm:h-4">
+          <div className="mt-2 sm:mt-1 relative w-52 sm:w-60 h-11 sm:h-14">
             <Image
               src={`/icons/${
                 theme === 'light'
