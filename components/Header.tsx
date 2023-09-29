@@ -23,7 +23,7 @@ const Header = (): JSX.Element => {
     <section className="relative flex flex-col w-full max-w-8xl pr-3 pl-3 sm:pl-6 sm:pr-6 2xl:pl-12 2xl:pr-12 dark:text-white">
       <div className="flex items-center justify-between mt-4">
         <StaticI18nLink href="/">
-          <div className="flex items-center relative w-52 sm:w-60 h-3 sm:h-4">
+          <div className="flex items-center relative w-52 sm:w-60 h-10 sm:h-14">
             <Image
               src={`/icons/${
                 theme === 'light'

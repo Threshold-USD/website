@@ -130,7 +130,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
       <Header />
       <div className="flex flex-col w-full max-w-5xl px-6 sm:px-12 dark:text-white">
         <section className="flex flex-col items-center justify-center gap-4 mt-32">
-          <h1 className="max-w-4xl text-center leading-[5.25rem]">
+          <h1 className="max-w-4xl text-center xl:leading-[5.25rem]">
             <LazyText
               text="heroBannerTitle"
               className="h-16 w-56 sm:w-96 -mt-4"

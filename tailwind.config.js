@@ -46,7 +46,7 @@ module.exports = {
       pink3: '#FF008A',
       pink4: '#d045fe',
       pink5: '#6c385c',
-      purple: '#7C08F9',
+      purple: '#BD00FF',
       green: '#36bc8c',
       green2: '#2ecc94',
       green3: '#83eac6',
