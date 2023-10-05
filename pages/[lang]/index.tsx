@@ -22,7 +22,7 @@ const coingeckoIds: CoingeckoID = {
   tbtc: 'tbtc',
 };
 
-const networks = ['goerli', 'sepolia'];
+const networks = ['mainnet'];
 const query = `
 query {
   global(id: "only") {
