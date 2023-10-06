@@ -190,18 +190,15 @@ export default function Home({ data }: HomeProps): JSX.Element {
         </section>
         <section className="flex justify-center mt-24">
           <div className="flex shadow-lg rounded-2xl mx-12 dark:bg-darkBlue">
-            <div className="hidden lg:flex flex-col items-center gap-1 border-r border-grey2 dark:border-grey/40 px-20 py-6 w-80">
+            <div className="hidden lg:flex flex-col items-center gap-1 border-r border-grey2 dark:border-grey/40 px-20 py-9 w-80">
               <span className="text-sm font-semibold text-grey text-center dark:text-white">
                 <LazyText text="card1" />
               </span>
               <span className="text-3xl font-bold text-blue1 dark:text-purple">
                 {thusdSupply?.shorten() ?? <LazyText text="loading" />}
               </span>
-              <span className="text-xs font-semibold text-grey3">
-                <LazyText text="cardsBelow" />
-              </span>
             </div>
-            <div className="hidden lg:flex flex-col items-center gap-1 px-20 py-6 w-80">
+            <div className="hidden lg:flex flex-col items-center gap-1 px-20 py-9 w-80">
               <span className="text-sm font-semibold text-grey text-center dark:text-white">
                 <LazyText text="card2" />
               </span>
@@ -210,11 +207,8 @@ export default function Home({ data }: HomeProps): JSX.Element {
                   <LazyText text="loading" />
                 )}
               </span>
-              <span className="text-xs font-semibold text-grey3">
-                <LazyText text="cardsBelow" />
-              </span>
             </div>
-            <div className="flex flex-col justify-center gap-1 border-l border-grey2 dark:border-grey/40 px-12 lg:px-16 xl:px-14 py-6 text-center w-60 sm:w-80 pb-12">
+            <div className="flex flex-col justify-center gap-1 border-l border-grey2 dark:border-grey/40 px-12 lg:px-16 xl:px-14 py-9 text-center w-60 sm:w-80">
               <span className="text-sm font-semibold text-grey text-center dark:text-white">
                 <LazyText text="card3" />
               </span>
