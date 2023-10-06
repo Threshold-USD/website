@@ -22,7 +22,7 @@ const coingeckoIds: CoingeckoID = {
   tbtc: 'tbtc',
 };
 
-const networks = ['mainnet'];
+const network = 'mainnet';
 const query = `
 query {
   global(id: "only") {
@@ -49,17 +49,15 @@ const queryCollateralsData = async (collateral: any) => {
 
   for (const collateralVersion of collateral.subfolders) {
     const version = collateralVersion.name;
-    for (const network of networks) {
-      const thresholdUrlByNetwork = `https://api.thegraph.com/subgraphs/name/evandrosaturnino/${collateral.name}-${version}-${network}-thresholdusd`;
-      const queriedCollateralData = await queryGraph(
-        query,
-        thresholdUrlByNetwork,
-      ).catch((e) => console.log(e));
-      queriedData.push({
-        collateralName: coingeckoIds[collateral.name as keyof CoingeckoID],
-        queriedCollateralData,
-      });
-    }
+    const thresholdUrlByNetwork = `https://api.thegraph.com/subgraphs/name/evandrosaturnino/${collateral.name}-${version}-${network}-thresholdusd`;
+    const queriedCollateralData = await queryGraph(
+      query,
+      thresholdUrlByNetwork,
+    ).catch((e) => console.log(e));
+    queriedData.push({
+      collateralName: coingeckoIds[collateral.name as keyof CoingeckoID],
+      queriedCollateralData,
+    });
   }
 
   const data: any = await Promise.all(queriedData);
@@ -83,7 +81,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
     let totalCollateral: Decimal = Decimal.from(0);
     let totalVaults: Decimal = Decimal.from(0);
     let thusdSupply: Decimal = Decimal.from(0);
-
+    console.log('data2: ', data);
     data.forEach((dataElement: any) => {
       if (!dataElement || !dataElement.queriedCollateralData.data) {
         return;
