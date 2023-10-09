@@ -70,7 +70,7 @@ type HomeProps = {
 
 export default function Home({ data }: HomeProps): JSX.Element {
   const { theme } = useContext(ThemeContext);
-  const [numberOfOpenedVaults, setNumberOfOpenedVaults] = useState<Decimal>();
+  const [numberOfOpenedVaults, setNumberOfOpenedVaults] = useState<number>();
   const [tvlInEth, setTvlInEth] = useState<Decimal>();
   const [thusdSupply, setThusdSupply] = useState<Decimal>();
   const [tokensPrice, setTokensPrice] = useState<Record<string, Decimal>>({});
@@ -79,7 +79,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
     if (Object.values(tokensPrice).length != Object.values(coingeckoIds).length)
       return;
     let totalCollateral: Decimal = Decimal.from(0);
-    let totalVaults: Decimal = Decimal.from(0);
+    let totalVaults = 0;
     let thusdSupply: Decimal = Decimal.from(0);
     console.log('data2: ', data);
     data.forEach((dataElement: any) => {
@@ -94,11 +94,11 @@ export default function Home({ data }: HomeProps): JSX.Element {
         ),
       );
       totalCollateral = totalCollateral.add(tvl);
-      totalVaults = totalVaults.add(
-        Decimal.from(
+      totalVaults =
+        totalVaults +
+        Number(
           dataElement.queriedCollateralData.data.global.numberOfOpenTroves,
-        ),
-      );
+        );
       thusdSupply = thusdSupply.add(
         Decimal.from(
           dataElement.queriedCollateralData.data.global.currentSystemState
@@ -203,9 +203,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
                 <LazyText text="card2" />
               </span>
               <span className="text-3xl font-bold text-blue1 dark:text-purple">
-                {numberOfOpenedVaults?.prettify(0) ?? (
-                  <LazyText text="loading" />
-                )}
+                {numberOfOpenedVaults ?? <LazyText text="loading" />}
               </span>
             </div>
             <div className="flex flex-col justify-center gap-1 border-l border-grey2 dark:border-grey/40 px-12 lg:px-16 xl:px-14 py-9 text-center w-60 sm:w-80">
