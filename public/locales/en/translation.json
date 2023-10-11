@@ -42,7 +42,7 @@
   "secondFrequentAskedQuestion": "What are the key benefits of Threshold USD?",
   "secondAnswerFirstParagraph": "Here follows some key benefits of using Threshold USD:", 
   "secondAnswerFirstPoint": "1. Borrow USD stablecoin by depositing your tBTC as collateral",
-  "secondAnswerSecondPoint": "2. Aporta liquidez con tus thUSD en Curve o Uniswap.",
+  "secondAnswerSecondPoint": "2. Provide liquidity with your thUSD in Curve or Uniswap.",
   "secondAnswerThirdPoint": "3. Redeem your collateral assets at any time.",
   "thirdFrequentAskedQuestion": "How does it works?",
   "thirdAnswerFirstParagraph": "To ensure that the entire stablecoin supply remains fully backed by collateral, Vaults that fall under the minimum collateral ratio of 110% will be closed (liquidated).",
