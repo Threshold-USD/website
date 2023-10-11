@@ -305,12 +305,24 @@ export default function Home({ data }: HomeProps): JSX.Element {
                     className="w-full sm:w-40 h-3.5"
                   />
                 </span>
-                <span className="text-xs text-grey4 font-medium pr-20 dark:text-grey3">
+                <span className="gap-1 text-xs text-grey4 font-medium pr-20 dark:text-grey3">
                   <LazyText
-                    text="thirdFeatureDescription"
+                    text="thirdFeatureDescriptionFirstPart"
                     className="w-full sm:w-96 h-3.5"
                     numberOfLines={2}
                   />
+                  <Link
+                    href="https://docs.threshold.network/applications/threshold-usd"
+                    target="_blank"
+                  >
+                    <span className="text-blue">
+                      <LazyText
+                        text="thirdFeatureDescriptionSecondPart"
+                        className="w-full sm:w-96 h-3.5"
+                        numberOfLines={2}
+                      />
+                    </span>
+                  </Link>
                 </span>
               </div>
             </div>
@@ -571,7 +583,10 @@ export default function Home({ data }: HomeProps): JSX.Element {
                   text="fourthAnswerThirdSentence"
                   className="w-full h-3.5"
                 />
-                <Link href="https://app.thresholdusd.org" target="_blank">
+                <Link
+                  href="https://discord.com/invite/Threshold"
+                  target="_blank"
+                >
                   <span className="text-blue">
                     <LazyText
                       text="fourthAnswerFourthSentence"
