@@ -86,6 +86,10 @@ export default function Home({ data }: HomeProps): JSX.Element {
       if (!dataElement || !dataElement.queriedCollateralData.data) {
         return;
       }
+      console.log(
+        'dataElement.queriedCollateralData.data: ',
+        dataElement.queriedCollateralData.data,
+      );
       const tokenPrice = tokensPrice[dataElement.collateralName];
       const tvl = tokenPrice.mul(
         Decimal.from(
@@ -188,7 +192,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
             </Link>
           </div>
         </section>
-        <section className="flex justify-center mt-24">
+        {/* <section className="flex justify-center mt-24">
           <div className="flex shadow-lg rounded-2xl mx-12 dark:bg-darkBlue">
             <div className="hidden lg:flex flex-col items-center gap-1 border-r border-grey2 dark:border-grey/40 px-20 py-9 w-80">
               <span className="text-sm font-semibold text-grey text-center dark:text-white">
@@ -221,7 +225,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
         <section className="flex flex-col md:flex-row gap-12 sm:gap-20 md:gap-0 justify-center mt-32 sm:mt-40">
           <div className="flex flex-col gap-4 text-left w-full">
             <span className="text-2xl text-center sm:text-left font-bold">
@@ -724,6 +728,7 @@ export async function getStaticProps() {
       result.forEach((element: any) => collateralData.push(element));
     });
   }
+
   return {
     props: { data: collateralData }, // will be passed to the page component as props
   };
