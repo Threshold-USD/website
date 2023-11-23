@@ -316,7 +316,7 @@ export default function Home({ data }: HomeProps): JSX.Element {
                     numberOfLines={2}
                   />
                   <Link
-                    href="https://docs.threshold.network/applications/threshold-usd"
+                    href="https://github.com/Threshold-USD/dev"
                     target="_blank"
                   >
                     <span className="text-blue">
