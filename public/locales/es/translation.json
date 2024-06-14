@@ -124,7 +124,7 @@
   "featuresPageEighthQuestion": "¿Cómo se garantiza que thUSD siga de cerca el precio del USD?",
   "featuresPageEighthAnswerFirstParagraph": "La capacidad de canjear thUSD por tBTC al valor nominal (es decir, 1 thUSD por $1 de tBTC) y la relación de garantía mínima del 110% crean un piso y un techo de precios a través de oportunidades de arbitraje. Llamamos a estos mecanismos de 'hard peg' ya que se basan en procesos directos.",
   "featuresPageEighthAnswerSecondParagraph": "thUSD también se beneficia de mecanismos más indirectos para la paridad con el USD, llamados 'soft peg'. Uno de estos mecanismos es la paridad como punto de Schelling. Dado que Threshold USD considera que thUSD es igual al USD, la paridad entre ambos es un estado de equilibrio implícito del protocolo. Otro de estos mecanismos es la tarifa de préstamo sobre las nuevas deudas. A medida que aumentan las redenciones (lo que implica que thUSD está por debajo de $1), también aumenta la baseRate, lo que hace que pedir prestado sea menos atractivo y evita que nuevos thUSD lleguen al mercado y bajen el precio por debajo de $1.",
-  "featuresPageEighthAnswerThirdParagraphFirstSentence": "Liquity (en el que se basa el Protocolo thUSD) realizó un análisis exhaustivo sobre la estabilidad de precios de LUSD ",
+  "featuresPageEighthAnswerThirdParagraphFirstSentence": "Liquity (en el que se basa el Protocolo thUSD) realizó un análisis exhaustivo sobre la estabilidad de precios de thUSD ",
   "featuresPageEighthAnswerThirdParagraphSecondSentence": "aquí. ",
   "featuresPageEighthAnswerThirdParagraphThirdSentence": "Este análisis es igualmente relevante para thUSD.",
   "featuresPageNinthQuestion": "¿Qué son las redenciones de colateral?",
