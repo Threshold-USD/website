@@ -634,8 +634,6 @@ export default function Home({ data }: HomeProps): JSX.Element {
                   text="featuresPageTwelfthAnswerFirstParagraph"
                   className="w-full h-3.5"
                 />
-                <br />
-                <br />
                 <LazyText
                   text="featuresPageTwelfthAnswerSecondParagraph"
                   className="w-full h-3.5"
