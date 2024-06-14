@@ -612,33 +612,70 @@ export default function Home({ data }: HomeProps): JSX.Element {
               </p>
             </div>
           </div>
-          <div className="flex flex-col gap-3 max-w-sm mt-16">
-            <div className="relative w-7 h-7">
-              <Image
-                src="/icons/question-mark.svg"
-                alt="question mark icon"
-                fill={true}
-                sizes="(min-width: 1rem) 24vw"
-                loading="lazy"
-              />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-4 mt-16">
+            <div className="flex flex-col gap-3 max-w-sm">
+              <div className="relative w-7 h-7">
+                <Image
+                  src="/icons/question-mark.svg"
+                  alt="question mark icon"
+                  fill={true}
+                  sizes="(min-width: 1rem) 24vw"
+                  loading="lazy"
+                />
+              </div>
+              <span className="mt-3 font-semibold dark:text-white">
+                <LazyText
+                  text="featuresPageTwelfthQuestion"
+                  className="w-full h-3.5"
+                />
+              </span>
+              <p className="font-medium text-sm text-grey leading-6 dark:text-grey3">
+                <LazyText
+                  text="featuresPageTwelfthAnswerFirstParagraph"
+                  className="w-full h-3.5"
+                />
+                <br />
+                <br />
+                <LazyText
+                  text="featuresPageTwelfthAnswerSecondParagraph"
+                  className="w-full h-3.5"
+                />
+                <br />
+                <br />
+                <LazyText
+                  text="featuresPageTwelfthAnswerThirdParagraph"
+                  className="w-full h-3.5"
+                />
+              </p>
             </div>
-            <span className="mt-3 font-semibold dark:text-white">
-              <LazyText text="frequentAskedQuestionCTATitle" />
-            </span>
-            <p className="font-medium text-sm text-grey leading-6 dark:text-grey3">
-              <LazyText
-                text="frequentAskedQuestionCTADescriptionFirstSentence"
-                className="w-full h-3.5"
-              />
-              <Link href="/features/#faq">
-                <span className="text-blue">
-                  <LazyText
-                    text="frequentAskedQuestionCTADescriptionSecondSentence"
-                    className="w-20 h-3.5"
-                  />
-                </span>
-              </Link>
-            </p>
+            <div className="flex flex-col gap-3 max-w-sm">
+              <div className="relative w-7 h-7">
+                <Image
+                  src="/icons/question-mark.svg"
+                  alt="question mark icon"
+                  fill={true}
+                  sizes="(min-width: 1rem) 24vw"
+                  loading="lazy"
+                />
+              </div>
+              <span className="mt-3 font-semibold dark:text-white">
+                <LazyText text="frequentAskedQuestionCTATitle" />
+              </span>
+              <p className="font-medium text-sm text-grey leading-6 dark:text-grey3">
+                <LazyText
+                  text="frequentAskedQuestionCTADescriptionFirstSentence"
+                  className="w-full h-3.5"
+                />
+                <Link href="/features/#faq">
+                  <span className="text-blue">
+                    <LazyText
+                      text="frequentAskedQuestionCTADescriptionSecondSentence"
+                      className="w-20 h-3.5"
+                    />
+                  </span>
+                </Link>
+              </p>
+            </div>
           </div>
         </section>
       </div>
